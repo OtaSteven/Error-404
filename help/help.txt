@@ -1,0 +1,21 @@
+This text file will provide links on how to install some of the software we will be using. Some of them you can use other software.
+
+For HTML:
+You can use notepad++, Visual Studio Code, or any other editor you may have. I (Steven) am using Visual Studio code and here is a link to installing visual studio code. You just need to install it and you will be able to code in HTML, CSS, and Javascript (like any other software).
+
+Link: https://code.visualstudio.com/
+
+
+For Java:
+From most of the videos I have watch, I seen Eclipse being used often so I will put a link to install it here if you need it. If not I think it is fine to also use a different software to code in Java.
+
+Link: https://www.eclipse.org/
+
+
+For Tomcat and MySql:
+For these two, I have found that you can install XAMPP which is basicaly a free toolit that has Apache, PhP, MySql, as well as other things. The one we are gonna be using are Apache (which is basically the same as Tomcat, a web server) and MySql. I do not think you need to install any of them from their official website as it is included when installing this.
+
+Link: https://www.apachefriends.org/index.html
+
+
+
