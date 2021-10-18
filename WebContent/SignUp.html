@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Error 404 Sign Up</title>
+<style>
+	form{
+	border: 0.5% solid;
+	padding-top: 3%;
+		font-size:2%;
+	}
+	input{
+		width: 25%;
+		padding: 0.75% 1.5%;
+		margin: 0.5% 0;
+		display: inline-block;
+		border: 0.5% solid #ccc;
+		box-sizing: border-box;
+	}
+	button{
+		background-color: green;
+		color: white;
+		padding: 0.75%;
+		margin: 0.15% 0;
+		border: none;
+		cursor: pointer;
+		width: 20%;
+	}
+	button:hover{
+		opacity: 0.7;
+	}
+	.container{
+		padding: 2%;
+		background-color: white;
+	}
+	
+	ul{
+		list-style-type:none;
+		margin: 0%;
+		padding: 1%;
+		overflow: hidden;
+	}
+	ul li{
+		float: left;
+	}
+	li:hover{
+		opacity: 0.7;
+	}
+	ul li a{
+		text-decoration: none;
+		display: block;
+		padding: 5%;
+		color: black;
+		background-color:#E1DFDE;
+	}
+	
+	
+</style>
+</head>
+<body style="background-color:#E1DFDE;color:black;font-family:arial;text-align:center;">
+<ul>
+	<li><a href="">Home</a><li>
+	<li><a href="">Sign Up</a></li>
+	<li><a href="">Login</a><li>
+</ul>
+
+<h1 style="padding:5%;color:black;">Sign Up</h1>
+
+<div class="container">
+	<label for="signUp"><b>UserName</b></label>
+	<input type="text" placeholder="Enter Username" name="newUserName" required>
+	<br>
+	<label for="name"><b>Name &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</b></label>
+	<input type="text" placeholder="Enter Your Name" name="name" required>
+	<br>
+	<label for="newPassword"><b>Password</b></label>
+	<input type="password" placeholder="Enter Password" name="newPassword" required>
+	<br>
+	<label for="confirmPassword"><b>Password</b></label>
+	<input type="password" placeholder="Confirm Password" name="confirmPassword" required>
+	<br> <br>
+	<button type="submit">Sign Up</button>
+</div>
+</body>
+</html>
