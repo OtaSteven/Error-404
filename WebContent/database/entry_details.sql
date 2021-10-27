@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 27, 2021 at 10:35 PM
+-- Generation Time: Oct 27, 2021 at 10:46 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.11
 
@@ -32,6 +32,13 @@ CREATE TABLE `entry_details` (
   `username` varchar(255) NOT NULL,
   `password` varchar(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `entry_details`
+--
+
+INSERT INTO `entry_details` (`email`, `username`, `password`) VALUES
+('stevenwho@csus.edu', 'StevenWHo', 'St12');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
