@@ -76,19 +76,19 @@
                       <h4 class="mt-1 mb-5 pb-1">Error 404 Company</h4>
                     </div>
 
-                    <form>        <!-- Beginning of Login Form -->
+                    <form action = "loginCheck.php" method = "post">        <!-- Beginning of Login Form -->
                       <p>Please login to your account</p>
 
                       <div class="form-outline mb-4">
-                        <input type="email" id="form2Example11" class="form-control" placeholder="Username"/>
+                        <input type="text" id="form2Example11" name = "Username" class="form-control" placeholder="Username"/>
                       </div>
 
                       <div class="form-outline mb-4">
-                        <input type="password" id="form2Example22" class="form-control" placeholder="Password" />
+                        <input type="password" id="form2Example22" name = "Password" class="form-control" placeholder="Password" />
                       </div>
 
                       <div class="text-center pt-1 mb-5 pb-1">
-                        <input class="btn btn-primary btn-lg" type="submit" name="save" value="Log In">
+                        <input class="btn btn-primary btn-lg" type="submit" name="save" value="Login">
                         <a style = "font-size:75%"class="text-muted" href="#!">Forgot password?</a>
                       </div>
                       <!--  <button style="color:white;background-color:#3C3C3C;font-size:85%;border-radius:11%;" type="button">-->
