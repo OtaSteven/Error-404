@@ -15,37 +15,28 @@ if (!$conn)     //if the connection with the server fail
 {
     die("Connection Failed:" . mysqli_connect_error());
 }
-
-//Getting values from login.html
-$name = $_POST['Username'];
-$pass = $_POST['Password'];
-
-//Preventing MySql injection (so that these varaibles won't be inserted into the database)
-$name = stripslashes($name);
-$pass = stripslashes($pass);
-
-//Select database
-$sql = "SELECT * FROM entry_details";
-$result = mysqli_query($conn, $sql);
-
-$row = mysqli_fetch_assoc($result);
-/* echo "Name: " . $name . " Password: " . $pass;
-Checking what row gets from database
-while($row = mysqli_fetch_assoc($result)) 
+if (isset($_POST['save']))
 {
-    echo "id: " . $row["id"]. " - Name: " . $row["username"]. " " . $row["password"]. "<br>";
-}
-*/
+    //Getting values from login.html
+    $name = $_POST['user'];
+    $pass = $_POST['pass'];
 
-if ($row['username'] == $name && $row['password'] == $pass)
-{
-    //echo "Login success! Welcome " .$row['username'];
-    header("Location: http://localhost:8080/Home.html");
-    exit();
-}
-else
-{
-    header("Location: http://localhost:8080/login.html");
-    exit();
+    // write query for all entry_details
+    $sql = "Select * from entry_details where username = '$name' and password = '$pass'";
+    // make query and get result
+    $result = mysqli_query($conn, $sql);
+    
+    if ($result->num_rows > 0)
+    {
+        header("Location: /Home.html?user='$name'");
+        exit();
+    }
+    else
+    {
+        echo("Error with user log in");
+        header("Location: /login.html?error=login");
+        exit();
+    }
+     
 }
 ?>
