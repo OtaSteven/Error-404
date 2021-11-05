@@ -32,13 +32,14 @@ if (isset($_POST['save']))
         $_SESSION['id'] = $row['id'];
         $_SESSION['username'] = $row['username'];
 
-        header("Location: /Home2.php");
+        // print_r($row);       //prints out all the data in $row (a certain row in the database)
+        header("Location: Home2.php");
         exit();
     }
     else
     {
         echo("Error with user log in");
-        header("Location: /login.html?error=login");
+        header("Location: login.html?error=login");
         exit();
     }
      

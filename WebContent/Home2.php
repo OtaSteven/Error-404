@@ -33,7 +33,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['username']))
             <a class="nav-link" href="Library.php">Library</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Settings</a>
+            <a class="nav-link" href="About.html">About</a>
           </li>
         </ul>
 
