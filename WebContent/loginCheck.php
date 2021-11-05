@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 //variable of server and database
 $servername = "localhost";
 $username = "root";
@@ -28,7 +28,11 @@ if (isset($_POST['save']))
     
     if ($result->num_rows > 0)
     {
-        header("Location: /Home.html?user='$name'");
+        $row = mysqli_fetch_assoc($result);
+        $_SESSION['id'] = $row['id'];
+        $_SESSION['username'] = $row['username'];
+
+        header("Location: /Home2.php");
         exit();
     }
     else
