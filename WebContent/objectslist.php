@@ -3,7 +3,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$database_name = "projectaccount";      //The name, "projectaccount", can be replace to what your folder name is in phpMyAdmin
+$database_name = "projectaccount";
 //=============================================
 
 $conn = mysqli_connect($servername, $username, $password, $database_name);      //assign conn variable to the database
@@ -17,17 +17,16 @@ if (!$conn)     //if the connection with the server fail
 
 if (isset($_POST['save']))      //When the button name 'save' is click on
 {
-    $name = $_POST['username'];     //gets data from the input name 'username'
-    $email = $_POST['email'];       //gets data from the input name 'email'
-    $pass = $_POST['password'];     //gets data from the input name 'password'
+    $name = $_POST['name'];     //gets data from the input name 'name'
+    $link = $_POST['link'];     //gets data from the input name 'link'
 
-    $sql_query = "INSERT INTO entry_details (username, email, password)
-    VALUES ('$name', '$email', '$pass')";           //This is where all the data we collected are stored into MySql database
+    $sql_query = "INSERT INTO objectslist (name, link)
+    VALUES ('$name', '$link')";           //This is where all the data we collected are stored into MySql database
 
     //If statements to make sure that the connection and our inputs are successfully inserted into the database
     if (mysqli_query($conn, $sql_query))
     {
-        echo "New Details Entry inserted successfully!";
+        echo "New object entry inserted successfully!";
     }
     else
     {
@@ -36,7 +35,7 @@ if (isset($_POST['save']))      //When the button name 'save' is click on
     
     mysqli_close($conn);        //making sure to close the connection with MySql
 
-    header("Location: http://localhost:8080/login.html");   //Sending the user back to the login screen
+    header("Location: Home2.php");   //Sending the user back to the login screen
     die();
 
 }
