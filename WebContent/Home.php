@@ -62,7 +62,7 @@ session_start();
     </nav>
   </section>
 
-<!-- landing page welcome and body section -->
+<!-- landing page welcome and body -->
   <header class="container-fluid">
     <div class="welcome">
       <h1 class="fw-bolder">Welcoming Title for Web App</h1>

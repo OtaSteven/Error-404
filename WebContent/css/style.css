@@ -44,7 +44,7 @@ header /* background for header */
 	transform: translate(-50%, -55%);
 	text-align: center;
 }
-.welcome p /*sets max width for text under title*/
+.welcome p /*sets max width for text under title */
 {
     max-width: 500px;
 }
