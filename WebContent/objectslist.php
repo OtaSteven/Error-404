@@ -1,19 +1,6 @@
 <?php
-//variable of server and database
-$servername = "localhost";
-$username = "root";
-$password = "";
-$database_name = "projectaccount";
-//=============================================
 
-$conn = mysqli_connect($servername, $username, $password, $database_name);      //assign conn variable to the database
-
-
-//now check the connection
-if (!$conn)     //if the connection with the server fail
-{
-    die("Connection Failed:" . mysqli_connect_error());
-}
+require_once 'db_conn.php';
 
 if (isset($_POST['save']))      //When the button name 'save' is click on
 {
@@ -35,7 +22,7 @@ if (isset($_POST['save']))      //When the button name 'save' is click on
     
     mysqli_close($conn);        //making sure to close the connection with MySql
 
-    header("Location: http://localhost:8080/Home.html");   //Sending the user back to the login screen
+    header("Location: Home2.php");   //Sending the user back to the login screen
     die();
 
 }

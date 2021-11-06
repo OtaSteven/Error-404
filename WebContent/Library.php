@@ -1,3 +1,13 @@
+<?php
+
+session_start();
+
+if (isset($_SESSION['id']) && isset($_SESSION['username']))
+{
+
+
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -34,7 +44,7 @@
     <section class="nbar" style="background-color:#eee;">
       <nav class="navbar navbar-expand-md navbar-dark bg-dark justify-content-center">
         
-        <a href="Home.html" class="navbar-brand mr-auto">Error 404</a>
+        <a href="Home2.php" class="navbar-brand mr-auto">Error 404</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -43,22 +53,24 @@
         
           <ul class="navbar-nav justify-content-center">
             <li class="nav-item active">
-              <a class="nav-link" href="Home.html">Home<span class="sr-only"></span></a>
+              <a class="nav-link" href="Home2.php">Home<span class="sr-only"></span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Gallery</a>
+              <a class="nav-link" href="Library.php">Library</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="Library.html">Settings</a>
+              <a class="nav-link" href="About.html">About</a>
             </li>
           </ul>
   
           <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
             <li class="nav-item">
-              <a class="nav-link" href="login.html">Login</a>
+              <p class = "nav-link" style="text-decoration: none">
+                <?php echo $_SESSION['username']; ?>
+              </p>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="SignUp.html">Sign Up</a>
+              <a class="nav-link" href="logout.php">Logout</a>
             </li>
           </ul>
   
@@ -115,3 +127,13 @@
     
   </body>     <!-- End of Body -->
 </html>
+
+<?php
+
+}
+else
+{
+  header("Location: Home.html");
+  exit();
+}
+?>
