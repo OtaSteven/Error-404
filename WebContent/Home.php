@@ -13,9 +13,9 @@ session_start();
 </head>
 
 <!-- navbar section-->
-<body style="font-family:Helvetica, Arial, sans-serif;">
+<body>
   <section class="nbar" style="background-color: #eee;">
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark justify-content-center">
+    <nav class="navbar navbar-expand-md navbar-static-top navbar-dark bg-dark justify-content-center">
       
       <a href="Home.php" class="navbar-brand mr-auto">Error 404</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown">
@@ -63,28 +63,41 @@ session_start();
   </section>
 
 <!-- landing page welcome and body -->
-  <section class="">
-    <header class="page-header header container-fluid">
-      <div class="welcome">
-        <h1>Welcoming Title for Web App</h1>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-        <button type="button" class="btn btn-primary" href="SignUp.html">Get Started</button>
+  <header class="container-fluid">
+    <div class="welcome">
+      <h1 class="fw-bolder">Welcoming Title for Web App</h1>
+      <p class="fw-normal">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+      <a class="btn btn-primary btn-lg px-4 me-sm-3" href="SignUp.html" target="_blank">Get Started</a>
+      <a class="btn btn-outline-dark btn-lg px-4" href="demo.php" target="_blank">Demo</a> <!-- links to a different page to demo app in case user dont want to sign up -->
+    </div> 
+  </header>
+
+<!-- text section and contact section -->
+  <div id="container container-fluid">
+    <div class="description text-white">
+      <div>
+        <h2 class="text-center fw-bolder pt-4 pb-4">The Web App</h2>
       </div>
-    </header>
-    <div id="container">
-      <div class="top">
-        
-      </div>
-      <div class="bottom">
-        <h1>Some Text</h1>
+      <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-12">
+          <h3>How it Works</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque interdum quam odio, quis placerat ante luctus eu. Sed aliquet dolor id sapien rutrum, id vulputate quam iaculis.</p>
+        </div>
+
+        <div class="col-lg-4 col-md-4 col-sm-12">
+          <h3>Purpose</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque interdum quam odio, quis placerat ante luctus eu. Sed aliquet dolor id sapien rutrum, id vulputate quam iaculis.</p>
+        </div>
+
+        <div class="col-lg-4 col-md-4 col-sm-12">
+          <h3>Who We Are</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque interdum quam odio, quis placerat ante luctus eu. Sed aliquet dolor id sapien rutrum, id vulputate quam iaculis.</p>
+        </div>
       </div>
     </div>
-  </section>
-
-  
+  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <!-- Getting the bundles of Bootstrap -->
-  <script src="script.js"></script>
 </body>
 </html>
