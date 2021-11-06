@@ -66,9 +66,8 @@ session_start();
   <section class="">
     <header class="page-header header container-fluid">
       <div class="welcome">
-        <h1>Welcoming Title for Web App</h1>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-        <button type="button" class="btn btn-primary" href="SignUp.html">Get Started</button>
+        <h1>Contact Information</h1>
+        <p>The best way to contact our company is through email, we have a company phone number as well. Below are the emails of our development team. Thank you!</p>
       </div>
     </header>
     <div id="container">
