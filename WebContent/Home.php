@@ -62,7 +62,7 @@ session_start();
     </nav>
   </section>
 
-<!-- landing page welcome and body -->
+<!-- landing page welcome and body section -->
   <header class="container-fluid">
     <div class="welcome">
       <h1 class="fw-bolder">Welcoming Title for Web App</h1>
@@ -72,7 +72,7 @@ session_start();
     </div> 
   </header>
 
-<!-- text section and contact section -->
+<!-- text/description section -->
   <div id="container container-fluid">
     <div class="description text-white">
       <div>
