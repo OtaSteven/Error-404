@@ -64,7 +64,6 @@ session_start();
   </section>
 
 <!-- landing page welcome and body -->
-  <section class="">
     <header class="page-header header container-fluid">
       <div class="welcome">
         <h1>Contact Information</h1>
@@ -72,21 +71,18 @@ session_start();
       </div>
     </header>
     <div id="container">
-      <div class="top">
-        
-      </div>
-      <div class="bottom">
+      <div class="description text-white">
         <h1>Company Phone: (916)Error-404</h1>
         <h3>Team Emails:</h3>
         <p>Isaiah Samaniego: daniellosamaniego@csus.edu</p>
         <p>Yi Lei: @csus.edu</p>
-        <p>Jesse Quach: @csus.edu</p>
+        <p>Jesse Quach: jessequach@csus.edu</p>
         <p>Steven Ho: @csus.edu</p>
         <p>Ethan Ha: @csus.edu</p>
         <p>Arash: @csus.edu</p>
       </div>
     </div>
-  </section>
+
 
   
 
