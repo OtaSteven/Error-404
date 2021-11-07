@@ -1,10 +1,13 @@
-body 
+html, body 
 {
     font-family: Helvetica, Arial, sans-serif;
     padding: 0;
     margin: 0;
-    /*background: #fffffff5;*/
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
+
+/* uneccessary since nav uses bootstrap templates
 .navbar 
 {
     background:#12131ae3;
@@ -22,38 +25,33 @@ body
 {
     color: rgba(255, 255, 255, 0.918);
 }
-.welcome
-{
-    left: 25%;
-	position: absolute;
-	top: 25%;
-	transform: translate(-50%, -55%);
-	text-align: center;
-}
-.welcome p
-{
-    /*background-color: rgb(180, 180, 180);*/
-    max-width: 500px;
-}
-/*.welcome button 
-{
-  
-}
-.welcome button:hover 
-{
+*/
 
-}*/
-#container
+#container /* just for setting total height of whole page*/
 {
     min-height: 100vh;
 }
-.top{
+header /* background for header */
+{
+    background-color: aliceblue;
     height: 50vh;
-    background-color:aliceblue;
 }
-.bottom{
+.welcome /* css for header text*/
+{
+    left: 50%;
+	position: absolute;
+	top: 30%;
+	transform: translate(-50%, -55%);
+	text-align: center;
+}
+.welcome p /*sets max width for text under title */
+{
+    max-width: 500px;
+}
+.description /* sets background for bottom half of page*/
+{
+    background-color: rgb(52, 58, 64);
     height: 50vh;
-    background-color:rgb(167, 167, 167);
 }
 /* Split the screen in half */
 .split {
