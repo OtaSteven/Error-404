@@ -68,6 +68,8 @@ session_start();
       <div class="welcome">
         <h1>Contact Information</h1>
         <p>The best way to contact our company is through email, we have a company phone number as well. Below are the emails of our development team. Thank you!</p>
+        <h1>Contact Information</h1>
+        <p>The best way to contact our company is through email, we have a company phone number as well. Below are the emails of our development team. Thank you!</p>
       </div>
     </header>
     <div id="container">
@@ -75,11 +77,11 @@ session_start();
         <h1>Company Phone: (916)Error-404</h1>
         <h3>Team Emails:</h3>
         <p>Isaiah Samaniego: daniellosamaniego@csus.edu</p>
-        <p>Yi Lei: @csus.edu</p>
+        <p>Yi Lei: YiLei@csus.edu</p>
         <p>Jesse Quach: jessequach@csus.edu</p>
-        <p>Steven Ho: @csus.edu</p>
-        <p>Ethan Ha: @csus.edu</p>
-        <p>Arash: @csus.edu</p>
+        <p>Steven Ho: sho8517@gmail.com</p>
+        <p>Ethan Ha: NicholasHa@csus.edu</p>
+        <p>Arash: ArashAmirebrahimi@csus.edu</p>
       </div>
     </div>
 
