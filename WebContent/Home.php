@@ -67,28 +67,37 @@ session_start();
   </section>
 
 <!-- landing page welcome and body -->
-  <section class="">
-    <header class="page-header header container-fluid">
+    <header class="hHeader container-fluid">
       <div class="welcome">
-        <h1>Welcoming Title for Web App</h1>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-        <button type="button" class="btn btn-primary" href="SignUp.html">Get Started</button>
+        <h1 class="fw-bolder">Welcome to the Web App</h1>
+        <p class="fw-normal">A simple page to help you get started using the app</p>
+        <a class="btn btn-primary btn-lg px-4 me-sm-3" href="SignUp.html" target="_blank">Get Started</a>
+        <a class="btn btn-outline-dark btn-lg px-4" href="demo.php" target="_blank">Demo</a> <!-- links to presentation page -->
       </div>
     </header>
-    <div id="container">
-      <div class="top">
-        
+
+<!-- text/description section -->
+  <div id="container">
+    <div class="description text-white">
+      <div>
+        <h2 class="text-center fw-bolder pt-4 pb-5">The Web App</h2>
       </div>
-      <div class="bottom">
-        <h1>Some Text</h1>
+
+      <div class="row justify-content-md-center">
+        <div class="col col-lg-2">
+          <h3>How it Works</h3>
+          <p>Using specific sets of images chosen by the user, the group of 6 images rotate  with the same format.</p>
+        </div> 
+        <div class="col col-lg-4"></div> <!-- empty to make space between how and purpose (maybe add image -->
+        <div class="col col-lg-2">
+          <h3>Purpose</h3>
+          <p>Designed to help ABAs, this web app is made with their purpose to help students.</p>
+        </div>
       </div>
     </div>
-  </section>
-
-  
+  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <!-- Getting the bundles of Bootstrap -->
-  <script src="script.js"></script>
 </body>
 </html>
