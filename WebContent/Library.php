@@ -44,7 +44,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['username']))
     <section class="nbar" style="background-color:#eee;">
       <nav class="navbar navbar-expand-md navbar-dark bg-dark justify-content-center">
         
-        <a href="Home2.php" class="navbar-brand mr-auto">Error 404</a>
+        <a href="Home.php" class="navbar-brand mr-auto">Error 404</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -53,26 +53,41 @@ if (isset($_SESSION['id']) && isset($_SESSION['username']))
         
           <ul class="navbar-nav justify-content-center">
             <li class="nav-item active">
-              <a class="nav-link" href="Home2.php">Home<span class="sr-only"></span></a>
+              <a class="nav-link" href="Home.php">Home<span class="sr-only"></span></a>
+            </li>
+            <?php if(isset($_SESSION['username']) && isset($_SESSION['id'])) { ?>
+              <li class="nav-item"> <a class="nav-link" href="Library.php">Library</a> </li>
+            <?php } ?>
+            <li class="nav-item">
+              <a class="nav-link" href="demo.php">Presentation</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="Library.php">Library</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="About.html">About</a>
+              <a class="nav-link" href="About.php">About</a>
             </li>
           </ul>
   
+          <!--- Checks if user is on an account, and if they are display their username and the logout option --->
+          <?php if(isset($_SESSION['username']) && isset($_SESSION['id'])) { ?>
           <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
-            <li class="nav-item">
-              <p class = "nav-link" style="text-decoration: none">
-                <?php echo $_SESSION['username']; ?>
-              </p>
-            </li>
+              <li class="nav-item">
+                  <p class = "nav-link" style="text-decoration: none">
+                  <?php echo $_SESSION['username']; ?>
+                  </p>
+              </li>
             <li class="nav-item">
               <a class="nav-link" href="logout.php">Logout</a>
             </li>
           </ul>
+          <?php } else {?> <!-- ENDING IF STATEMENT -->
+          <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
+            <li class="nav-item">
+              <a class="nav-link" href="login.html">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="SignUp.html">Sign Up</a>
+            </li>
+          </ul>
+          <?php } ?>
   
         </div>
       </nav>

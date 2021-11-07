@@ -1,5 +1,6 @@
 <?php
 session_start();
+require 'objectslist.php';
 ?>
 
 <!DOCTYPE html>
@@ -8,6 +9,25 @@ session_start();
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Home</title>
+
+  <style>
+    table {
+      overflow-y: scroll;
+      height: 955px;
+      width: 100%;
+      display: block;
+      position: relative;
+    }
+    tr {
+      text-align: center;
+    }
+    th {
+      position: sticky;
+      border-left: thin solid;
+      top: 0;
+      background-color: white;
+    }
+  </style>
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">      <!-- Connecting to bootstrap -->
   <link rel="stylesheet" type="text/css" href="css/style.css"> <!-- Specific file for all customization-->
@@ -24,62 +44,110 @@ session_start();
       </button>
 
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      
         <ul class="navbar-nav justify-content-center">
           <li class="nav-item active">
             <a class="nav-link" href="Home.php">Home<span class="sr-only"></span></a>
           </li>
           <?php if(isset($_SESSION['username']) && isset($_SESSION['id'])) { ?>
-          <li class="nav-item"> <a class="nav-link" href="Library.php">Library</a> </li>
+          <li class="nav-item"><a class="nav-link" href="Library.php">Library</a> </li>
           <?php } ?>
           <li class="nav-item">
             <a class="nav-link" href="demo.php">Presentation</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="About.html">About</a>
+            <a class="nav-link" href="About.php">About</a>
           </li>
         </ul>
 
-        <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
-          <li class="nav-item">
-            <a class="nav-link" href="login.html">Login</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="SignUp.html">Sign Up</a>
-          </li>
-        </ul>
+        <!--- Checks if user is on an account, and if they are display their username and the logout option --->
+        <?php if(isset($_SESSION['username']) && isset($_SESSION['id'])) { ?>
+          <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
+              <li class="nav-item">
+                  <p class = "nav-link" style="text-decoration: none">
+                  <?php echo $_SESSION['username']; ?>
+                  </p>
+              </li>
+            <li class="nav-item">
+              <a class="nav-link" href="logout.php">Logout</a>
+            </li>
+          </ul>
+          <?php } else {?> <!-- ENDING IF STATEMENT -->
+          <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
+            <li class="nav-item">
+              <a class="nav-link" href="login.html">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="SignUp.html">Sign Up</a>
+            </li>
+          </ul>
+          <?php } ?>
+
       </div>
     </nav>
   </section>
-  <!--- columns splitting the page --->
-  <div class="container">
-    <div class="row">
-    <div class="col-4">
-      <div style="leftside">
-        <ul class="list-group"> <!--need to add new checkboxes according to objectList database-->
-          <li class="list-group-item">
-            <input class="form-check-input-me-1" type="checkbox" value="">
-            First checkbox
-          </li>
-          
-        </ul>
-      </div>
-    </div>
-    <div class="col-8">
-      <div style="rightside">
-        Column 2
-      </div>
-    </div>
-    </div>
+
+  <div style='float:left'>
+  <form method="POST">
+  <table border="1" width="300" style="margin-left:30%;float:top;">
+    <tr>
+      <th width="50" >#</th>
+      <th width="200">Name</th>
+      <th width="100">Check</th>
+    </tr>
+      <?php
+        include "db_conn.php"; // Using database connection file here
+        $records = mysqli_query($conn,"select * from objectslist"); // fetch data from database
+        while($data = mysqli_fetch_array($records)) { ?>
+        <tr>
+          <td><?php echo $data['ID']; ?></td>
+          <td><?php echo $data['name']; ?></td>
+          <td style="text-align: center; vertical-align: middle"><input type = "checkbox" name='check[]' value="<?php echo $data['ID']; ?>"></td>
+        </tr>
+      <?php } ?>
+  </table>
+  <input type="submit" name="generate" value="Generate">
+
+  </form>
   </div>
-
   
-
-
-  
+  <div style='float:right'>
+  <?php
+    if(isset($_POST['generate']))
+    {
+      if(!empty($_POST['check']))
+      {
+        foreach($_POST['check'] as $value)
+        {
+            // write query for all entry_details
+            $sql = "Select * from objectslist where id = '$value'";
+            // make query and get result
+            $result = mysqli_query($conn, $sql);
+            if ($result->num_rows > 0)
+            {
+                $row = mysqli_fetch_assoc($result);
+                
+                echo '<img src="'.$row['link'].'"width="500px" height="500px"><br/>';
+                //print_r($row);       //prints out all the data in $row (a certain row in the database)
+            }
+            else
+            {
+                echo("Error with user log in");
+                header("Location: demo.php?error=obtaining picture");
+            }
+          //echo "ID of picture: ".$value.' ';
+        }
+      }
+      else{
+        echo "NOTHINGGGGGGG"; 
+      }
+    }
+  ?>
+  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <!-- Getting the bundles of Bootstrap -->
-  <script src="script.js"></script>
+  <!--- <script src="script.js"></script> -->
 </body>
 </html>
+
+

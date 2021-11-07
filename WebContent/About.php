@@ -32,10 +32,11 @@ session_start();
             <a class="nav-link" href="demo.php">Presentation</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="About.html">About</a>
+            <a class="nav-link" href="About.php">About</a>
           </li>
         </ul>
 
+        <!--- Checks if user is on an account, and if they are display their username and the logout option --->
         <?php if(isset($_SESSION['username']) && isset($_SESSION['id'])) { ?>
           <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
               <li class="nav-item">

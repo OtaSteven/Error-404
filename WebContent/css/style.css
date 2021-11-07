@@ -1,13 +1,10 @@
-html, body 
+body 
 {
     font-family: Helvetica, Arial, sans-serif;
     padding: 0;
     margin: 0;
-    overflow-x: hidden;
-    overflow-y: hidden;
+    /*background: #fffffff5;*/
 }
-
-/*
 .navbar 
 {
     background:#12131ae3;
@@ -25,31 +22,67 @@ html, body
 {
     color: rgba(255, 255, 255, 0.918);
 }
-*/
-
-#container /* just for setting total height of whole page*/
+.welcome
 {
-    min-height: 100vh;
-}
-header /* background for header */
-{
-    background-color: aliceblue;
-    height: 50vh;
-}
-.welcome /* css for header text*/
-{
-    left: 50%;
+    left: 25%;
 	position: absolute;
 	top: 25%;
 	transform: translate(-50%, -55%);
 	text-align: center;
 }
-.welcome p /*sets max width for text under title */
+.welcome p
 {
+    /*background-color: rgb(180, 180, 180);*/
     max-width: 500px;
 }
-.description /* sets background for bottom half of page*/
+/*.welcome button 
 {
-    background-color: rgb(52, 58, 64);
-    height: 50vh;
+  
 }
+.welcome button:hover 
+{
+
+}*/
+#container
+{
+    min-height: 100vh;
+}
+.top{
+    height: 50vh;
+    background-color:aliceblue;
+}
+.bottom{
+    height: 50vh;
+    background-color:rgb(167, 167, 167);
+}
+/* Split the screen in half */
+.split {
+    height: 100%;
+    width: 50%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+  }
+  
+  /* Control the left side */
+  .left {
+    left: 0;
+    background-color: #111;
+  }
+  
+  /* Control the right side */
+  .right {
+    right: 0;
+    background-color: red;
+  }
+  
+  /* If you want the content centered horizontally and vertically */
+  .centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
