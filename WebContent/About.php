@@ -66,22 +66,30 @@ session_start();
 <!-- landing page welcome and body -->
     <header class="page-header header container-fluid">
       <div class="welcome">
-        <h1>Contact Information</h1>
-        <p>The best way to contact our company is through email, we have a company phone number as well. Below are the emails of our development team. Thank you!</p>
+        <h1>Our Company Goals</h1>
+        <p>The goal of our company is to help autistic children. We have a series of quizzes that stimulates their brain. With our vast library of options to choose from they will never be bored.</p>
         <h1>Contact Information</h1>
         <p>The best way to contact our company is through email, we have a company phone number as well. Below are the emails of our development team. Thank you!</p>
       </div>
     </header>
-    <div id="container">
+    <div style="text-align:center" id="container">
       <div class="description text-white">
         <h1>Company Phone: (916)Error-404</h1>
         <h3>Team Emails:</h3>
-        <p>Isaiah Samaniego: daniellosamaniego@csus.edu</p>
-        <p>Yi Lei: YiLei@csus.edu</p>
-        <p>Jesse Quach: jessequach@csus.edu</p>
-        <p>Steven Ho: sho8517@gmail.com</p>
-        <p>Ethan Ha: NicholasHa@csus.edu</p>
-        <p>Arash: ArashAmirebrahimi@csus.edu</p>
+        <table align="center">
+          <tr>
+            <td>Isaiah Samaniego: daniellosamaniego@csus.edu</td>
+            <td>Yi Lei: YiLei@csus.edu</td>
+          </tr>
+          <tr>
+            <td>Jesse Quach: jessequach@csus.edu</td>
+            <td>Steven Ho: sho8517@gmail.com</td>
+          </tr>
+          <tr>
+            <td>Ethan Ha: NicholasHa@csus.edu</td>
+            <td>Arash: ArashAmirebrahimi@csus.edu</td>
+          </tr>
+          </table>
       </div>
     </div>
 
