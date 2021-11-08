@@ -67,10 +67,11 @@ session_start();
   </section>
 
 <!-- landing page welcome and body -->
-    <header class="hHeader container-fluid">
+    <header class="head container-fluid">
+      <img class="blur" src="images/tempgif.gif" alt="temp">
       <div class="welcome">
         <h1 class="fw-bolder">Welcome to the Web App</h1>
-        <p class="fw-normal">A simple page to help you get started using the app</p>
+        <p class="fw-bold">A simple page to help you get started using the app</p>
         <a class="btn btn-primary btn-lg px-4 me-sm-3" href="SignUp.html" target="_blank">Get Started</a>
         <a class="btn btn-outline-dark btn-lg px-4" href="demo.php" target="_blank">Demo</a> <!-- links to presentation page -->
       </div>
