@@ -6,10 +6,13 @@ require 'objectslist.php';
 <!DOCTYPE html>
 <html>
 <head>
+  
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Home</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">      <!-- Connecting to bootstrap -->
+  <link rel="stylesheet" type="text/css" href="css/style.css"> <!-- Specific file for all customization-->
 
+  <title>Home</title>
   <style>
     table {
       overflow-y: scroll;
@@ -18,19 +21,22 @@ require 'objectslist.php';
       display: block;
       position: relative;
     }
-    tr {
+    tr, td {
       text-align: center;
+      border: thin solid;
     }
     th {
       position: sticky;
-      border-left: thin solid;
+      border: thin solid;
       top: 0;
       background-color: white;
     }
+    html, body {
+      overflow-y: visible;
+    }
+    
   </style>
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">      <!-- Connecting to bootstrap -->
-  <link rel="stylesheet" type="text/css" href="css/style.css"> <!-- Specific file for all customization-->
 </head>
 
 <body style="font-family:Helvetica, Arial, sans-serif;">
@@ -96,7 +102,7 @@ require 'objectslist.php';
     </tr>
       <?php
         include "db_conn.php"; // Using database connection file here
-        $records = mysqli_query($conn,"select * from objectslist"); // fetch data from database
+        $records = mysqli_query($conn,"select * from objectslist"); // fetch data from 
         while($data = mysqli_fetch_array($records)) { ?>
         <tr>
           <td><?php echo $data['ID']; ?></td>
@@ -116,29 +122,43 @@ require 'objectslist.php';
     {
       if(!empty($_POST['check']))
       {
-        foreach($_POST['check'] as $value)
+        $checkedArray = $_POST['check'];
+        $count = count($checkedArray);
+        if ($count >= 3 and $count <= 12)
         {
-            // write query for all entry_details
-            $sql = "Select * from objectslist where id = '$value'";
-            // make query and get result
-            $result = mysqli_query($conn, $sql);
-            if ($result->num_rows > 0)
-            {
-                $row = mysqli_fetch_assoc($result);
-                
-                echo '<img src="'.$row['link'].'"width="500px" height="500px"><br/>';
-                //print_r($row);       //prints out all the data in $row (a certain row in the database)
-            }
-            else
-            {
-                echo("Error with user log in");
-                header("Location: demo.php?error=obtaining picture");
-            }
-          //echo "ID of picture: ".$value.' ';
+          foreach($checkedArray as $value)
+          {
+              // write query for all entry_details
+              $sql = "Select * from objectslist where id = '$value'";
+              // make query and get result
+              $result = mysqli_query($conn, $sql);
+              if ($result->num_rows > 0)
+              {
+                  echo '<div class=container>';
+                  echo '<div class="column">';
+                  while ($row = mysqli_fetch_assoc($result))
+                  {
+                    echo '<img src="'.$row['link'].'">';
+                  }
+                  echo '</div>';
+                  echo '</div>';
+                  //print_r($row);       //prints out all the data in $row (a certain row in the database)
+              }
+              else
+              {
+                  echo "<script>alert('Error getting pictures');</script>";
+                  header("Location: demo.php?error=obtaining picture");
+              }
+            //echo "ID of picture: ".$value.' ';
+          }
+        }
+        else
+        {
+          echo "<script>alert('Make sure the pictures are between 3 ~ 12.');</script>";
         }
       }
       else{
-        echo "NOTHINGGGGGGG"; 
+        echo "<script>alert('Nothing is selected');</script>"; 
       }
     }
   ?>
