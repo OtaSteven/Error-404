@@ -1,6 +1,7 @@
 <?php
 session_start();
-require 'objectslist.php';
+require "db_conn.php"; // Making sure this file has the connection to our database
+
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +17,7 @@ require 'objectslist.php';
   <style>
     table {
       overflow-y: scroll;
-      height: 955px;
+      height: 750px;
       width: 100%;
       display: block;
       position: relative;
@@ -29,7 +30,8 @@ require 'objectslist.php';
       position: sticky;
       border: thin solid;
       top: 0;
-      background-color: white;
+      background-color: black;
+      color: white;
     }
     html, body {
       overflow-y: visible;
@@ -70,7 +72,7 @@ require 'objectslist.php';
           <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
               <li class="nav-item">
                   <p class = "nav-link" style="text-decoration: none">
-                  <?php echo $_SESSION['username']; ?>
+                  <?php echo 'User'.$_SESSION['id']; ?>
                   </p>
               </li>
             <li class="nav-item">
@@ -91,31 +93,49 @@ require 'objectslist.php';
       </div>
     </nav>
   </section>
-
+  <br>
+  <!--- LEFT SIDE OF THE SCREEN --->
   <div style='float:left'>
   <form method="POST">
+  <br>
   <table border="1" width="300" style="margin-left:30%;float:top;">
+    <tr height="50px">
+      <th style="background-color: #79BBEB"><label >Search</label></th>
+      <th colspan="2"><input size="30px" type = "text" name="itemToSearch" placeholder="Enter picture/id" style="text-align: center"></th>
+      <th><input type = "submit" name = "search"></th>
+    </tr>
     <tr>
       <th width="50" >#</th>
       <th width="200">Name</th>
+      <th width="100">Picture</th>
       <th width="100">Check</th>
     </tr>
       <?php
-        include "db_conn.php"; // Using database connection file here
-        $records = mysqli_query($conn,"select * from objectslist"); // fetch data from 
-        while($data = mysqli_fetch_array($records)) { ?>
+        if (isset($_POST['search']) && !empty($_POST['itemToSearch']))
+        {
+          $itemToSearch = $_POST['itemToSearch'];
+          $search_result = mysqli_query($conn,"SELECT * FROM objectslist WHERE itemName = '".$itemToSearch."' OR ID = '".$itemToSearch."'");
+        }
+        else
+        {
+          $search_result = mysqli_query($conn,"select * from objectslist"); // fetch data from objectslist
+        }
+        while($data = mysqli_fetch_array($search_result)) { ?>
         <tr>
           <td><?php echo $data['ID']; ?></td>
-          <td><?php echo $data['name']; ?></td>
+          <td><?php echo $data['itemName']; ?></td>
+          <td><img src="<?php echo $data['link']?>" width=50px; height=50px;></td>
           <td style="text-align: center; vertical-align: middle"><input type = "checkbox" name='check[]' value="<?php echo $data['ID']; ?>"></td>
         </tr>
       <?php } ?>
   </table>
-  <input type="submit" name="generate" value="Generate">
+  <br>
+  <input type="submit" name="generate" value="Generate" style="height:50px; width:225px;float:right">
 
   </form>
   </div>
   
+  <!--- RIGHT SIDE OF THE SCREEN WHERE PICTURES ARE DISPLAY --->
   <div style='float:right'>
   <?php
     if(isset($_POST['generate']))
