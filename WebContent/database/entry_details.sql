@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 05, 2021 at 06:30 AM
+-- Generation Time: Nov 16, 2021 at 01:47 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -31,16 +31,16 @@ CREATE TABLE `entry_details` (
   `id` int(11) NOT NULL,
   `email` varchar(255) NOT NULL,
   `username` varchar(255) NOT NULL,
-  `password` varchar(4) NOT NULL
+  `password` varchar(4) NOT NULL,
+  `Type` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `entry_details`
 --
 
-INSERT INTO `entry_details` (`id`, `email`, `username`, `password`) VALUES
-(1, 'stevenwho@csus.edu', 'StevenWHo', 'St12'),
-(2, 'stevenwho@csus.edu', 'StevenWHo', '1111');
+INSERT INTO `entry_details` (`id`, `email`, `username`, `password`, `Type`) VALUES
+(1, 'sho8517@gmail.com', 'StevenWHo', '1234', 'Admin');
 
 --
 -- Indexes for dumped tables
@@ -60,7 +60,7 @@ ALTER TABLE `entry_details`
 -- AUTO_INCREMENT for table `entry_details`
 --
 ALTER TABLE `entry_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
