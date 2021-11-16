@@ -1,7 +1,7 @@
 <?php
 session_start();
 require "db_conn.php"; // Making sure this file has the connection to our database
-
+require_once "function.php";
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +17,6 @@ require "db_conn.php"; // Making sure this file has the connection to our databa
   <style>
     table {
       overflow-y: scroll;
-      height: 750px;
       width: 100%;
       display: block;
       position: relative;
@@ -72,7 +71,15 @@ require "db_conn.php"; // Making sure this file has the connection to our databa
           <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
               <li class="nav-item">
                   <p class = "nav-link" style="text-decoration: none">
-                  <?php echo 'User'.$_SESSION['id']; ?>
+                  <?php 
+                  if ($_SESSION['type'] == 'Admin')
+                  {
+                    echo $_SESSION['username'];
+                  }
+                  else
+                  {
+                    echo 'User'.$_SESSION['id'];
+                  } ?>
                   </p>
               </li>
             <li class="nav-item">
@@ -98,12 +105,15 @@ require "db_conn.php"; // Making sure this file has the connection to our databa
   <div style='float:left'>
   <form method="POST">
   <br>
-  <table border="1" width="300" style="margin-left:30%;float:top;">
-    <tr height="50px">
+  <table width="300" height= "50px" style="margin-left:30%; overflow-y:hidden; background-color:black">
+  <tr height="50px">
       <th style="background-color: #79BBEB"><label >Search</label></th>
-      <th colspan="2"><input size="30px" type = "text" name="itemToSearch" placeholder="Enter picture/id" style="text-align: center"></th>
+      <th><input size="30px" type = "text" name="itemToSearch" placeholder="Enter picture/id" style="text-align: center"></th>
       <th><input type = "submit" name = "search"></th>
+      <th><input type = "submit" name ="reset" value="Reset"></th>
     </tr>
+  </table>
+  <table border="1" width="300" height="750px" style="margin-left:30%;float:top;">
     <tr>
       <th width="50" >#</th>
       <th width="200">Name</th>
@@ -137,40 +147,21 @@ require "db_conn.php"; // Making sure this file has the connection to our databa
   
   <!--- RIGHT SIDE OF THE SCREEN WHERE PICTURES ARE DISPLAY --->
   <div style='float:right'>
+  <a class="btn btn-primary btn-lg px-4 me-sm-3" href="presentation.php" target="_blank">Present</a>
   <?php
     if(isset($_POST['generate']))
     {
       if(!empty($_POST['check']))
       {
         $checkedArray = $_POST['check'];
+        $_SESSION['saveArray'] = $checkedArray;
+
+
         $count = count($checkedArray);
+
         if ($count >= 3 and $count <= 12)
         {
-          foreach($checkedArray as $value)
-          {
-              // write query for all entry_details
-              $sql = "Select * from objectslist where id = '$value'";
-              // make query and get result
-              $result = mysqli_query($conn, $sql);
-              if ($result->num_rows > 0)
-              {
-                  echo '<div class=container>';
-                  echo '<div class="column">';
-                  while ($row = mysqli_fetch_assoc($result))
-                  {
-                    echo '<img src="'.$row['link'].'">';
-                  }
-                  echo '</div>';
-                  echo '</div>';
-                  //print_r($row);       //prints out all the data in $row (a certain row in the database)
-              }
-              else
-              {
-                  echo "<script>alert('Error getting pictures');</script>";
-                  header("Location: demo.php?error=obtaining picture");
-              }
-            //echo "ID of picture: ".$value.' ';
-          }
+          displayPicture($conn);
         }
         else
         {
