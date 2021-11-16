@@ -65,19 +65,28 @@ session_start();
   </section>
 
 <!-- landing page welcome and body -->
+    <div style="display: block; margin-left: auto; margin-right: auto; width: 100%; background-color: black">
+      <img style="align:center; height:100px" src="https://cdn.discordapp.com/attachments/891069703643082796/899757427904360448/1_hFwwQAW45673VGKrMPE2qQ.png">
+    </div>
     <header class="page-header header container-fluid">
-      <div class="welcome">
+      <div style="height:75%; left: 50%; text-align:center">
+        <br><br>
         <h1>Our Company Goals</h1>
-        <p>The goal of our company is to help autistic children. We have a series of quizzes that stimulates their brain. With our vast library of options to choose from they will never be bored.</p>
+        <p>The goal of our company is to help autistic children. We have a series of quizzes that stimulates their brain. <br>With our vast library of options to choose from they will never be bored.</p>
+        <br><br>
         <h1>Contact Information</h1>
-        <p>The best way to contact our company is through email, we have a company phone number as well. Below are the emails of our development team. Thank you!</p>
+        <p>The best way to contact our company is through email, we have a company phone number as well. <br>Below are the emails of our development team. Thank you!</p>
       </div>
     </header>
-    <div style="text-align:center" id="container">
+    <div style="text-align:center; height: auto">
       <div class="description text-white">
-        <h1>Company Phone: (916)Error-404</h1>
+        <br>
+        <br>
+        <h2>Company Phone: (916)Error-404</h2>
+        <br>
         <h3>Team Emails:</h3>
         <table align="center">
+          <br>
           <tr>
             <td>Isaiah Samaniego: daniellosamaniego@csus.edu</td>
             <td>Yi Lei: YiLei@csus.edu</td>
