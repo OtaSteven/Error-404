@@ -68,6 +68,7 @@ require_once "function.php";
     </section>
 
     <?php
+      if (!(isset($_POST['left']) || isset($_POST['right']) || isset($_POST['shuffle'])))
         displayPicture($conn);
     ?>
 
@@ -81,14 +82,17 @@ require_once "function.php";
     if(isset($_POST['left']))
     {
       shiftLeft($conn);
+      displayPicture($conn);
     }
     if(isset($_POST['right']))
     {
       shiftRight($conn);
+      displayPicture($conn);
     }
     if(isset($_POST['shuffle']))
     {
       shufflePicture($conn);
+      displayPicture($conn);
     }
     ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    <!-- Getting the bundles of Bootstrap -->
