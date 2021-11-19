@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 19, 2021 at 11:32 PM
+-- Generation Time: Nov 15, 2021 at 11:59 PM
 -- Server version: 10.4.21-MariaDB
--- PHP Version: 8.0.11
+-- PHP Version: 8.0.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -23,7 +23,7 @@ SET time_zone = "+00:00";
 
 -- --------------------------------------------------------
 
---
+-- --
 -- Table structure for table `objectslist`
 --
 
@@ -91,7 +91,7 @@ INSERT INTO `objectslist` (`ID`, `itemName`, `link`, `Type`) VALUES
 (50, 'Cat', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9-YouEbFysqdVKhae8zApG6O8P1JYoAAHtQ&usqp=CAU', 'Living being'),
 (51, 'Cereal', 'https://www.verywellhealth.com/thmb/6ETbfskE79RGe5853dGPNcN_6Og=/500x350/filters:no_upscale():max_bytes(150000):strip_icc()/30D7A016-ABA5-48DD-BE39-3E7A223A03BF-96f2ba9e6c724dc9b2ba638b0c0f44a2.jpeg', 'Food'),
 (52, 'Chair', 'https://m.media-amazon.com/images/I/81J5r9dANGL._SL1500_.jpg', 'Item'),
-(53, 'Word', 'https://ecdn.teacherspayteachers.com/thumbitem/ABC-Clipart-Icon-2025193-1459804008/original-2025193-1.jpg', 'Etc.'),
+(53, 'Word', 'https://lh3.googleusercontent.com/proxy/U6TvC3jo_plD8YudcQwNSfSob2SUQlSqqxc-2hnLvI53sMwAtoQNu6RCGwEG2G5G1RgiUn_NAsukNcJwMF_N2jU', 'Etc.'),
 (54, 'Cheese', 'https://media.istockphoto.com/photos/cheese-on-white-picture-id1127471287?k=20&m=1127471287&s=170667a&w=0&h=md8EzisxLE73EZ2dY_iPkTmtSzgfiTmAwB8jKcW2-7w=', 'Food'),
 (55, 'Chicken', 'https://www.collinsdictionary.com/images/full/chicken_249474721.jpg', 'Living being'),
 (56, 'Chips', 'https://m.media-amazon.com/images/I/81DF9tHWcbL._SX679_.jpg', 'Food'),
@@ -191,7 +191,7 @@ INSERT INTO `objectslist` (`ID`, `itemName`, `link`, `Type`) VALUES
 (150, 'Pants', 'https://www.kindpng.com/picc/m/7-70195_jeans-trousers-clipart-pants-clipart-hd-png-download.png', 'Clothes'),
 (151, 'Paper', 'https://img.lakeshorelearning.com/is/image/OCProduction/ta50ac_g?wid=800&fmt=jpeg&qlt=85,1&pscan=auto&op_sharpen=0&resMode=sharp2&op_usm=1,0.65,6,0', 'Item'),
 (152, 'Paper Towels', 'https://m.media-amazon.com/images/I/61x78pgqz4L._SL1200_.jpg', 'Item'),
-(153, 'Pear', 'https://illustoon.com/photo/3846.png', 'Food'),
+(153, 'Pear', 'http://www.thesouthernolive.com/wp-content/uploads/2021/09/istockphoto-186861864-170667a.jpeg', 'Food'),
 (154, 'Peas', 'https://siccadania.com/wp-content/uploads/2021/01/Peas.jpg', 'Food'),
 (155, 'Pencil', 'https://www.raymondgeddes.com/rgc/images/blog/number-2-pencils.jpg', 'Item'),
 (156, 'Phone', 'https://m.media-amazon.com/images/I/61s0IaMcKtL._AC_SL1500_.jpg', 'Item'),
