@@ -24,7 +24,7 @@ session_start();
       opacity: 0.35;
       border-radius: 5px;
       z-index: -1;
-      background-size: contain;
+      background-size: contain; 
     }
   </style>
 
