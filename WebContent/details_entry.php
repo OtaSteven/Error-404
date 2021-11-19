@@ -23,7 +23,7 @@ if (isset($_POST['save']))      //When the button name 'save' is click on
     
     mysqli_close($conn);        //making sure to close the connection with MySql
 
-    header("Location: login.html");   //Sending the user back to the login screen
+    header("Location: Confirmation.html");   //Sends the user to the confirmation screen
     die();
 
 }
