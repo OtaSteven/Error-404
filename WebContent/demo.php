@@ -12,6 +12,10 @@ require_once "function.php";
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">      <!-- Connecting to bootstrap -->
   <link rel="stylesheet" type="text/css" href="css/style.css"> <!-- Specific file for all customization-->
+  <!-- Getting JQuery bundles -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!-- Getting the js file we made -->
+  <!--- <script src="script.js"></script> -->
 
   <title>Home</title>
   <style>
@@ -32,13 +36,17 @@ require_once "function.php";
       background-color: black;
       color: white;
     }
-    html, body {
+    html, body 
+    {
       overflow-y: visible;
     }
-    
+    input.larger {
+    transform: scale(2);
+    top: 10;
+    }
   </style>
-
 </head>
+
 
 <body style="font-family:Helvetica, Arial, sans-serif;">
   <!--- navbar section --->
@@ -107,8 +115,8 @@ require_once "function.php";
   <br>
   <table width="300" height= "50px" style="margin-left:30%; overflow-y:hidden; background-color:black">
   <tr height="50px">
-      <th style="background-color: #79BBEB"><label >Search</label></th>
-      <th><input size="30px" type = "text" name="itemToSearch" placeholder="Enter picture/id" style="text-align: center"></th>
+      <th><input style="background-color: #79BBEB; width: 70px; height: 50px" type="submit" name = "searchIcon" value="Search"></th>
+      <th><input size="30px" type = "text" id="itemToSearch" placeholder="Enter picture/id" style="text-align: center"></th>
       <th><input type = "submit" name = "search"></th>
       <th><input type = "submit" name ="reset" value="Reset"></th>
     </tr>
@@ -120,65 +128,73 @@ require_once "function.php";
       <th width="100">Picture</th>
       <th width="100">Check</th>
     </tr>
-      <?php
-        if (isset($_POST['search']) && !empty($_POST['itemToSearch']))
-        {
-          $itemToSearch = $_POST['itemToSearch'];
-          $search_result = mysqli_query($conn,"SELECT * FROM objectslist WHERE itemName = '".$itemToSearch."' OR ID = '".$itemToSearch."'");
-        }
-        else
-        {
-          $search_result = mysqli_query($conn,"select * from objectslist"); // fetch data from objectslist
-        }
-        while($data = mysqli_fetch_array($search_result)) { ?>
-        <tr>
-          <td><?php echo $data['ID']; ?></td>
-          <td><?php echo $data['itemName']; ?></td>
-          <td><img src="<?php echo $data['link']?>" width=50px; height=50px;></td>
-          <td style="text-align: center; vertical-align: middle"><input type = "checkbox" name='check[]' value="<?php echo $data['ID']; ?>"></td>
-        </tr>
-      <?php } ?>
+    <tbody id = "myTableData">
+    <?php
+      $search_result = mysqli_query($conn,"select * from objectslist");
+    while($data = mysqli_fetch_array($search_result)) 
+    { ?>
+    <tr>
+      <td><?php echo $data['ID']; ?></td>
+      <td><?php echo $data['itemName']; ?></td>
+      <td><img src="<?php echo $data['link']?>" width=50px; height=50px;></td>
+      <td style="text-align: center; vertical-align: middle"><input style="top: 0" class="larger" type = "checkbox" name='check[]' value="<?php echo $data['ID']; ?>"></td>
+  <?php } ?>
+        </tbody>
   </table>
   <br>
   <input type="submit" name="generate" value="Generate" style="height:50px; width:225px;float:right">
 
   </form>
   </div>
-  
   <!--- RIGHT SIDE OF THE SCREEN WHERE PICTURES ARE DISPLAY --->
   <div style='float:right'>
-  <a class="btn btn-primary btn-lg px-4 me-sm-3" href="presentation.php" target="_blank">Present</a>
   <?php
-    if(isset($_POST['generate']))
+  if (isset($_POST['reset']) || isset($_POST['searchIcon']))
+  {
+    $_PUT['itemToSearch'] = '';
+  }
+  if(isset($_POST['generate']))
+  {
+    if(!empty($_POST['check']))
     {
-      if(!empty($_POST['check']))
+      $checkedArray = $_POST['check'];
+      $_SESSION['saveArray'] = $checkedArray;
+
+      $count = count($checkedArray);
+
+      if ($count >= 3 and $count <= 12)
       {
-        $checkedArray = $_POST['check'];
-        $_SESSION['saveArray'] = $checkedArray;
-
-
-        $count = count($checkedArray);
-
-        if ($count >= 3 and $count <= 12)
-        {
-          displayPicture($conn);
-        }
-        else
-        {
-          echo "<script>alert('Make sure the pictures are between 3 ~ 12.');</script>";
-        }
+        displayPicture($conn);
+        echo '<a class="btn btn-primary btn-lg px-4 me-sm-3" href="presentation.php" target="_blank">Present</a>';
       }
-      else{
-        echo "<script>alert('Nothing is selected');</script>"; 
+      else
+      {
+        echo "<script>alert('Make sure the pictures are between 3 ~ 12.');</script>";
       }
     }
-  ?>
+    else{
+      echo "<script>alert('Nothing is selected');</script>"; 
+    }
+  }
+?>
   </div>
 
+<script>
+    $(document).ready(function()
+    {
+      $("#itemToSearch").on("keyup", function() 
+      {
+        var value = $(this).val().toLowerCase();
+        $("#myTableData tr").filter(function() 
+        {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+    });
+</script>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <!-- Getting the bundles of Bootstrap -->
-  <!--- <script src="script.js"></script> -->
 </body>
+
+
 </html>
-
-
