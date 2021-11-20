@@ -41,9 +41,9 @@ require_once "function.php";
       overflow-y: visible;
     }
     input.larger {
-    transform: scale(2);
-    top: 10;
-    }
+        width: 30px;
+        height: 30px;
+      }
   </style>
 </head>
 
@@ -80,7 +80,7 @@ require_once "function.php";
               <li class="nav-item">
                   <p class = "nav-link" style="text-decoration: none">
                   <?php 
-                  if ($_SESSION['type'] == 'Admin')
+                  if ($_SESSION['Type'] == 'Admin')
                   {
                     echo $_SESSION['username'];
                   }
@@ -137,9 +137,10 @@ require_once "function.php";
       <td><?php echo $data['ID']; ?></td>
       <td><?php echo $data['itemName']; ?></td>
       <td><img src="<?php echo $data['link']?>" width=50px; height=50px;></td>
-      <td style="text-align: center; vertical-align: middle"><input style="top: 0" class="larger" type = "checkbox" name='check[]' value="<?php echo $data['ID']; ?>"></td>
+      <td style="text-align: center; vertical-align: middle"><input class="larger" type = "checkbox" name='check[]' value="<?php echo $data['ID']; ?>"></td>
   <?php } ?>
-        </tbody>
+    </tr>
+    </tbody>
   </table>
   <br>
   <input type="submit" name="generate" value="Generate" style="height:50px; width:225px;float:right">

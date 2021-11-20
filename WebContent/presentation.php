@@ -42,11 +42,19 @@ require_once "function.php";
           </ul>
   
           <!--- Checks if user is on an account, and if they are display their username and the logout option --->
-          <?php if(isset($_SESSION['username']) && isset($_SESSION['id'])) { ?>
+        <?php if(isset($_SESSION['username']) && isset($_SESSION['id'])) { ?>
           <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
               <li class="nav-item">
                   <p class = "nav-link" style="text-decoration: none">
-                  <?php echo $_SESSION['username']; ?>
+                  <?php 
+                  if ($_SESSION['Type'] == 'Admin')
+                  {
+                    echo $_SESSION['username'];
+                  }
+                  else
+                  {
+                    echo 'User'.$_SESSION['id'];
+                  } ?>
                   </p>
               </li>
             <li class="nav-item">

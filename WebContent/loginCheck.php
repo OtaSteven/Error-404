@@ -11,7 +11,7 @@ if (isset($_POST['save']))
     $pass = $_POST['pass'];
 
     // write query for all entry_details
-    $sql = "Select * from entry_details where username = '$name' and password = '$pass'";
+    $sql = "Select * from entry_details where (username = '$name' OR email = '$name') and password = '$pass'";
     // make query and get result
     $result = mysqli_query($conn, $sql);
     
@@ -20,6 +20,7 @@ if (isset($_POST['save']))
         $row = mysqli_fetch_assoc($result);
         $_SESSION['id'] = $row['id'];
         $_SESSION['username'] = $row['username'];
+        $_SESSION['Type'] = $row['Type'];
 
         //print_r($row);       //prints out all the data in $row (a certain row in the database)
         header("Location: Home.php");
