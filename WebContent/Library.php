@@ -55,7 +55,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['username']))
             <li class="nav-item active">
               <a class="nav-link" href="Home.php">Home<span class="sr-only"></span></a>
             </li>
-            <?php if(isset($_SESSION['username']) && isset($_SESSION['id'])) { ?>
+            <?php if(isset($_SESSION['username']) && $_SESSION['Type'] == 'Admin') { ?>
               <li class="nav-item"> <a class="nav-link" href="Library.php">Library</a> </li>
             <?php } ?>
             <li class="nav-item">
