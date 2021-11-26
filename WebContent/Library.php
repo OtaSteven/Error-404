@@ -61,6 +61,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['username']))
             <li class="nav-item">
               <a class="nav-link" href="demo.php">Presentation</a>
             </li>
+            <?php if(isset($_SESSION['username']) && $_SESSION['Type'] == 'Admin') { ?>
+              <li class="nav-item"><a class="nav-link" href="setEditor.php">Editor</a></li>
+            <?php } ?>
             <li class="nav-item">
               <a class="nav-link" href="About.php">About</a>
             </li>
@@ -122,6 +125,13 @@ if (isset($_SESSION['id']) && isset($_SESSION['username']))
                           <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                           <div class="form-outline flex-fill mb-0">
                             <input type="text" name = "name" id="form3Example1c" class="form-control" placeholder="Enter the image's name" maxlength="40"/>
+                          </div>
+                        </div>
+
+                        <div class="d-flex flex-row align-items-center mb-4">
+                          <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                          <div class="form-outline flex-fill mb-0">
+                            <input type="text" name = "type" id="form3Example1c" class="form-control" placeholder="Enter the Category" maxlength="40"/>
                           </div>
                         </div>
 

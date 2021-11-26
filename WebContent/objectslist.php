@@ -6,9 +6,10 @@ if (isset($_POST['save']))      //When the button name 'save' is click on
 {
     $name = $_POST['name'];     //gets data from the input name 'name'
     $link = $_POST['link'];     //gets data from the input name 'link'
+    $type = $_POST['type'];     //gets data from the input name 'type'
 
-    $sql_query = "INSERT INTO objectslist (name, link)
-    VALUES ('$name', '$link')";           //This is where all the data we collected are stored into MySql database
+    $sql_query = "INSERT INTO objectslist (name, link, type)
+    VALUES ('$name', '$link', '$type')";           //This is where all the data we collected are stored into MySql database
 
     //If statements to make sure that the connection and our inputs are successfully inserted into the database
     if (mysqli_query($conn, $sql_query))

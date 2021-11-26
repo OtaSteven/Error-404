@@ -47,11 +47,14 @@ session_start();
             <a class="nav-link" href="Home.php">Home<span class="sr-only"></span></a>
           </li>
           <?php if(isset($_SESSION['username']) && $_SESSION['Type'] == 'Admin') { ?>
-              <li class="nav-item"> <a class="nav-link" href="Library.php">Library</a> </li>
-            <?php } ?>
+            <li class="nav-item"> <a class="nav-link" href="Library.php">Library</a> </li>
+          <?php } ?>
           <li class="nav-item">
             <a class="nav-link" href="demo.php">Presentation</a>
           </li>
+          <?php if(isset($_SESSION['username']) && $_SESSION['Type'] == 'Admin') { ?>
+            <li class="nav-item"><a class="nav-link" href="setEditor.php">Editor</a></li>
+          <?php } ?>
           <li class="nav-item">
             <a class="nav-link" href="About.php">About</a>
           </li>

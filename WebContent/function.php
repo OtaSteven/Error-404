@@ -10,8 +10,8 @@ function displayPicture($conn)
         $result = mysqli_query($conn, $sql);
         if ($result->num_rows > 0)
         {
-            echo '<div class=container>';
-            echo '<div class="column">';
+            echo '<div class="container">';
+            echo '<div class="column" style="margin-right: 3%;">';
             while ($row = mysqli_fetch_assoc($result))
             {
             echo '<img src="'.$row['link'].'">';
@@ -57,10 +57,7 @@ function shiftRight($conn)
     $_SESSION['saveArray'] = $arr1;
 }
 
-
-
 function shufflePicture($conn)
 {
     shuffle($_SESSION['saveArray']);
 }
-?>

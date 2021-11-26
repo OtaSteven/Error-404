@@ -12,7 +12,6 @@ require_once "function.php";
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">  <!-- Connecting to bootstrap -->
     <link rel="stylesheet" type="text/css" href="css/style.css"> <!-- Specific file for all customization-->
 
-
   </head>       <!-- End of Head -->
 
   <body style="font-family:arial;">
@@ -35,6 +34,9 @@ require_once "function.php";
             <?php } ?>
             <li class="nav-item">
               <a class="nav-link" href="demo.php">Presentation</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="setEditor.php">Editor</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="About.php">About</a>
@@ -75,6 +77,17 @@ require_once "function.php";
       </nav>
     </section>
 
+    <form method="POST">
+    <div style="text-align: center;">
+      <input style="margin-right: 5%;" type="submit" name="left" value="<< Left">
+      <input type="submit" name="shuffle" value="Shuffle">
+      <input style="margin-left: 5%;"type="submit" name="right" value="Right >>">
+    </div>
+    </form>
+
+    <br>
+    
+
     <?php
       if (!(isset($_POST['left']) || isset($_POST['right']) || isset($_POST['shuffle'])))
         displayPicture($conn);
@@ -96,11 +109,6 @@ require_once "function.php";
       displayPicture($conn);
     }
     ?>
-    <form method="POST">
-      <input type="submit" name="left" value="<< Left">
-      <input type="submit" name="right" value="Right >>">
-      <input type="submit" name="shuffle" value="Shuffle">
-    </form>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    <!-- Getting the bundles of Bootstrap -->
     

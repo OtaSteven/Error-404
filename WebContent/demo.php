@@ -40,10 +40,11 @@ require_once "function.php";
     {
       overflow-y: visible;
     }
-    input.larger {
-        width: 30px;
-        height: 30px;
-      }
+    input.larger 
+    {
+      width: 30px;
+      height: 30px;
+    }
   </style>
 </head>
 
@@ -68,6 +69,9 @@ require_once "function.php";
             <?php } ?>
           <li class="nav-item">
             <a class="nav-link" href="demo.php">Presentation</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="setEditor.php">Editor</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="About.php">About</a>
@@ -165,7 +169,31 @@ require_once "function.php";
 
       if ($count >= 3 and $count <= 12)
       {
-        displayPicture($conn);
+        foreach($_SESSION['saveArray'] as $value)
+        {
+          // write query for all entry_details
+          $sql = "Select * from objectslist where id = '$value'";
+          // make query and get result
+          $result = mysqli_query($conn, $sql);
+          if ($result->num_rows > 0)
+          {
+              echo '<div class=container>';
+              echo '<div class="column">';
+              while ($row = mysqli_fetch_assoc($result))
+              {
+              echo '<img src="'.$row['link'].'">';
+              }
+              echo '</div>';
+              echo '</div>';
+              //print_r($row);       //prints out all the data in $row (a certain row in the database)
+          }
+          else
+          {
+              header("Location: demo.php?error=obtaining picture");
+              echo "<script>alert('Error getting pictures');</script>";
+          }
+          //echo "ID of picture: ".$value.' ';
+        }
         echo '<a class="btn btn-primary btn-lg px-4 me-sm-3" href="presentation.php" target="_blank">Present</a>';
       }
       else
