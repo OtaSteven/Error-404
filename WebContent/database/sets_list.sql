@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 26, 2021 at 05:05 AM
+-- Generation Time: Nov 26, 2021 at 07:05 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.11
 
@@ -30,18 +30,18 @@ SET time_zone = "+00:00";
 CREATE TABLE `sets_list` (
   `ID` int(11) NOT NULL,
   `setName` varchar(255) NOT NULL,
-  `link1` varchar(255) NOT NULL,
-  `link2` varchar(255) NOT NULL,
-  `link3` varchar(255) NOT NULL,
-  `link4` varchar(255) NOT NULL,
-  `link5` varchar(255) NOT NULL,
-  `link6` varchar(255) NOT NULL,
-  `link7` varchar(255) NOT NULL,
-  `link8` varchar(255) NOT NULL,
-  `link9` varchar(255) NOT NULL,
-  `link10` varchar(255) NOT NULL,
-  `link11` varchar(255) NOT NULL,
-  `link12` varchar(255) NOT NULL
+  `link1` varchar(255) DEFAULT NULL,
+  `link2` varchar(255) DEFAULT NULL,
+  `link3` varchar(255) DEFAULT NULL,
+  `link4` varchar(255) DEFAULT NULL,
+  `link5` varchar(255) DEFAULT NULL,
+  `link6` varchar(255) DEFAULT NULL,
+  `link7` varchar(255) DEFAULT NULL,
+  `link8` varchar(255) DEFAULT NULL,
+  `link9` varchar(255) DEFAULT NULL,
+  `link10` varchar(255) DEFAULT NULL,
+  `link11` varchar(255) DEFAULT NULL,
+  `link12` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
