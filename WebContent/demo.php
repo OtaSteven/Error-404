@@ -142,10 +142,12 @@ require_once "function.php";
       <td><?php echo $data['itemName']; ?></td>
       <td><img src="<?php echo $data['link']?>" width=50px; height=50px;></td>
       <td style="text-align: center; vertical-align: middle"><input class="larger" type = "checkbox" name='check[]' value="<?php echo $data['ID']; ?>"></td>
+      </tr>
   <?php } ?>
-    </tr>
+    
     </tbody>
   </table>
+
   <br>
   <input type="submit" name="generate" value="Generate" style="height:50px; width:225px;float:right">
 

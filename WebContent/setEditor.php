@@ -51,6 +51,30 @@ require_once "function.php";
 			height: 125px;
 			margin: 2%;
 		}
+		.collapsible 
+		{
+			background-color: #01a1ec;
+			cursor: pointer;
+			padding: 18px;
+			width: 100%;
+			border: none;
+			text-align: left;
+			outline: none;
+			font-size: 20px;
+			
+		}
+		.collapsible:hover
+		{
+			background-color: #c6e2ff;
+  			color: black;
+		}
+		.content 
+		{
+			padding: 0 18px;
+			display: none;
+			overflow: hidden;
+			background-color: #f1f1f1;
+		}
 	</style>
 </head>
 
@@ -118,33 +142,72 @@ require_once "function.php";
 		</nav>
 	</section>
 
+	<br>
+
+	
+
 	<?php
-	$imageSet = mysqli_query($conn, "Select * from setentries");
+	$imageSet = mysqli_query($conn, "Select * from sets_list");
     while ($row = mysqli_fetch_assoc($imageSet))
     {
-		echo '<div class="container" style="border: solid black; background-color: #e6e6fa;">';
-        	echo '<lable style="font-size: 50px">'.$row['Name'].'</lable><br>';
-		echo '<div class="container"';
+		echo '<div class="container">';
+		echo '<button type="button" class="collapsible">';
+		echo $row['setName'];
+		echo '</button>';
 
+		echo '<div class="content">';
+		echo '<br>';
+		echo "<a href='editor.php?id=".$row['ID']."'>Edit Set</a>";
+		echo '<br>';
+
+		if (!(empty($row['link1'])))
 			echo '<img src="'.$row['link1'].'">';
+		if (!(empty($row['link2'])))
 			echo '<img src="'.$row['link2'].'">';
+		if (!(empty($row['link3'])))
 			echo '<img src="'.$row['link3'].'">';
+		if (!(empty($row['link4'])))
 			echo '<img src="'.$row['link4'].'">';
-
+		if (!(empty($row['link5'])))
 			echo '<img src="'.$row['link5'].'">';
+		if (!(empty($row['link6'])))
 			echo '<img src="'.$row['link6'].'">';
+		if (!(empty($row['link7'])))
 			echo '<img src="'.$row['link7'].'">';
+		if (!(empty($row['link8'])))
 			echo '<img src="'.$row['link8'].'">';
-
+		if (!(empty($row['link9'])))
 			echo '<img src="'.$row['link9'].'">';
+		if (!(empty($row['link10'])))
 			echo '<img src="'.$row['link10'].'">';
+		if (!(empty($row['link11'])))
 			echo '<img src="'.$row['link11'].'">';
+		if (!(empty($row['link12'])))
 			echo '<img src="'.$row['link12'].'">';
+
 		echo '</div>';
 		echo '</div>';
+
+		echo '<br>';
     }
 	?>
 
+	<script>
+	var coll = document.getElementsByClassName("collapsible");
+	var i;
+
+	for (i = 0; i < coll.length; i++) {
+	coll[i].addEventListener("click", function() {
+		this.classList.toggle("active");
+		var content = this.nextElementSibling;
+		if (content.style.display === "block") {
+		content.style.display = "none";
+		} else {
+		content.style.display = "block";
+		}
+	});
+	}
+	</script>
 
 
 
