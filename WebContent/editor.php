@@ -78,8 +78,8 @@ require_once "function.php";
             Set Editor
         </h1>
     </div>
-
-<div style='float:left; margin-left: 5%;'>
+<!--- LEFT SIDE OF THE SCREEN, SET EDITOR --->
+<div style='float:left; margin-left: 2%;'>
     <div class="container">
         <div class="row">
             <div class="col-md-6 offset-md-3 col-sm-12">
@@ -94,7 +94,7 @@ require_once "function.php";
             <div class="row">
                 
                 <div class="form-group">
-                    <label for="description">Images 1</label>
+                    <b><label for="description">Image 1</label></b>
                     <br>
                     <?php
                     if (!empty($data['link1']))
@@ -106,7 +106,7 @@ require_once "function.php";
                     <textarea class="form-control" name="link1" cols="30" rows="5"><?= $data['link1']?></textarea>
                 </div>
                 <div class="form-group">
-                    <label for="description">Images 2</label>
+                    <b><label for="description">Image 2</label></b>
                     <br>
                     <?php
                     if (!empty($data['link2']))
@@ -118,7 +118,7 @@ require_once "function.php";
                     <textarea class="form-control" name="link2" cols="30" rows="5"><?= $data['link2']?></textarea>
                 </div>
                 <div class="form-group">
-                    <label for="description">Images 3</label>
+                    <b><label for="description">Image 3</label></b>
                     <br>
                     <?php
                     if (!empty($data['link3']))
@@ -130,7 +130,7 @@ require_once "function.php";
                     <textarea class="form-control" name="link3" cols="30" rows="5"><?= $data['link3']?></textarea>
                 </div>
                 <div class="form-group">
-                    <label for="description">Images 4</label>
+                    <b><label for="description">Image 4</label></b>
                     <br>
                     <?php
                     if (!empty($data['link4']))
@@ -142,7 +142,7 @@ require_once "function.php";
                     <textarea class="form-control" name="link4" cols="30" rows="5"><?= $data['link4']?></textarea>
                 </div>
                 <div class="form-group">
-                    <label for="description">Images 5</label>
+                    <b><label for="description">Image 5</label></b>
                     <br>
                     <?php
                     if (!empty($data['link5']))
@@ -154,7 +154,7 @@ require_once "function.php";
                     <textarea class="form-control" name="link5" cols="30" rows="5"><?= $data['link5']?></textarea>
                 </div>
                 <div class="form-group">
-                    <label for="description">Images 6</label>
+                    <b><label for="description">Image 6</label></b>
                     <br>
                     <?php
                     if (!empty($data['link6']))
@@ -166,7 +166,7 @@ require_once "function.php";
                     <textarea class="form-control" name="link6" cols="30" rows="5"><?= $data['link6']?></textarea>
                 </div>
                 <div class="form-group">
-                    <label for="description">Images 7</label>
+                    <b><label for="description">Image 7</label></b>
                     <br>
                     <?php
                     if (!empty($data['link7']))
@@ -178,7 +178,7 @@ require_once "function.php";
                     <textarea class="form-control" name="link7" cols="30" rows="5"><?= $data['link7']?></textarea>
                 </div>
                 <div class="form-group">
-                    <label for="description">Images 8</label>
+                    <b><label for="description">Image 8</label></b>
                     <br>
                     <?php
                     if (!empty($data['link8']))
@@ -190,7 +190,7 @@ require_once "function.php";
                     <textarea class="form-control" name="link8" cols="30" rows="5"><?= $data['link8']?></textarea>
                 </div>
                 <div class="form-group">
-                    <label for="description">Images 9</label>
+                    <b><label for="description">Image 9</label></b>
                     <br>
                     <?php
                     if (!empty($data['link9']))
@@ -202,7 +202,7 @@ require_once "function.php";
                     <textarea class="form-control" name="link9" cols="30" rows="5"><?= $data['link9']?></textarea>
                 </div>
                 <div class="form-group">
-                    <label for="description">Images 10</label>
+                    <b><label for="description">Image 10</label></b>
                     <br>
                     <?php
                     if (!empty($data['link10']))
@@ -214,7 +214,7 @@ require_once "function.php";
                     <textarea class="form-control" name="link10" cols="30" rows="5"><?= $data['link10']?></textarea>
                 </div>
                 <div class="form-group">
-                    <label for="description">Images 11</label>
+                    <b><label for="description">Image 11</label></b>
                     <br>
                     <?php
                     if (!empty($data['link11']))
@@ -226,7 +226,7 @@ require_once "function.php";
                     <textarea class="form-control" name="link11" cols="30" rows="5"><?= $data['link11']?></textarea>
                 </div>
                 <div class="form-group">
-                    <label for="description">Images 12</label>
+                    <b><label for="description">Image 12</label></b>
                     <br>
                     <?php
                     if (!empty($data['link12']))
@@ -238,13 +238,14 @@ require_once "function.php";
                     <textarea class="form-control" name="link12" cols="30" rows="5"><?= $data['link12']?></textarea>
                 </div>
             </div>
-                <input type="submit" name="editForm" value="submit" class="btn btn-primary btn-block">
+                <input type="submit" name="editForm" value="Submit" class="btn btn-primary btn-block">
                 </form>
         </div>
     </div>
 </div>
 
-<div style='float:right; margin-right: 10%;'>
+<!--- RIGHT SIDE OF THE SCREEN, TABLE LIST --->
+<div style='float:right; margin-right: 9%; margin-top: 10%;'>
 <form method="POST">
     <br>
     <table width="300px" height= "50px" style="margin-left:30%; overflow-y:hidden; background-color:black">
