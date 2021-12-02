@@ -14,7 +14,7 @@ function displayPicture($conn)
             echo '<div class="column" style="margin-right: 3%;">';
             while ($row = mysqli_fetch_assoc($result))
             {
-            echo '<img src="'.$row['link'].'">';
+                echo '<img src="'.$row['link'].'">';
             }
             echo '</div>';
             echo '</div>';

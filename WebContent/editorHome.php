@@ -75,6 +75,11 @@ require_once "function.php";
 			overflow: hidden;
 			background-color: #f1f1f1;
 		}
+		button
+		{
+			border-radius: 4px;
+			font-size: 24px;
+		}
 	</style>
 </head>
 
@@ -101,7 +106,7 @@ require_once "function.php";
 						<a class="nav-link" href="demo.php">Presentation</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="setEditor.php">Editor</a>
+						<a class="nav-link" href="editorHome.php">Editor</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="About.php">About</a>
@@ -144,20 +149,22 @@ require_once "function.php";
 
 	<br>
 
-	
+	<h1 style="text-align: center; font-size: 48px; text-decoration: underline;"><b>Set Menu</b></h1>
+	<br>
 
 	<?php
 	$imageSet = mysqli_query($conn, "Select * from sets_list");
     while ($row = mysqli_fetch_assoc($imageSet))
     {
 		echo '<div class="container">';
-		echo '<button type="button" class="collapsible">';
+		echo '<button type="button" class="collapsible" style="font-size: 32px">';
 		echo $row['setName'];
 		echo '</button>';
 
 		echo '<div class="content">';
 		echo '<br>';
-		echo "<a href='editor.php?id=".$row['ID']."'>Edit Set</a>";
+		echo "<a style='text-decoration:none; margin-right: 1%;' href='editor.php?id=".$row['ID']."'><button style='background-color: #ffe599;'>Edit Set</button></a>";
+		echo "<a style='text-decoration:none' href='presentation.php?id=".$row['ID']."'><button style='background-color: #b6d7a8;'>Present Set</button></a>";
 		echo '<br>';
 
 		if (!(empty($row['link1'])))
@@ -187,7 +194,6 @@ require_once "function.php";
 
 		echo '</div>';
 		echo '</div>';
-
 		echo '<br>';
     }
 	?>

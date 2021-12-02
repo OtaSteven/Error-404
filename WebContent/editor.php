@@ -44,6 +44,8 @@ require_once "function.php";
     {
         text-align: center;
         border: thin solid;
+        max-width: 100%;
+        overflow: hidden; 
     }
     th 
     {
@@ -74,6 +76,7 @@ require_once "function.php";
 </head>
 <body>
     <div class="jumbotron">
+        <button style="border-radius: 10px; font-size: 24px;"><a style="text-decoration: none; color: black;" href="editorHome.php"><b>&#8592;</b></a></button>
         <h1 class="text-center">
             Set Editor
         </h1>
@@ -245,10 +248,11 @@ require_once "function.php";
 </div>
 
 <!--- RIGHT SIDE OF THE SCREEN, TABLE LIST --->
-<div style='float:right; margin-right: 9%; margin-top: 10%;'>
-<form method="POST">
+<div style='float:right; right: 0; margin-right: 9%; margin-top: 2%; position:fixed;'>
     <br>
-    <table width="300px" height= "50px" style="margin-left:30%; overflow-y:hidden; background-color:black">
+    <h2 style="position: relative;">*Drag or right click on picture for link*</h2>
+    <br>
+    <table width="300px" height= "50px" style="overflow-y:hidden; background-color:black;">
         <tr height="50px">
             <th><input style="background-color: #79BBEB; width: 70px; height: 50px" type="submit" name = "searchIcon" value="Search"></th>
             <th><input size="30px" type = "text" id="itemToSearch" placeholder="Enter picture/id" style="text-align: center"></th>
@@ -256,7 +260,8 @@ require_once "function.php";
             <th><input type = "submit" name ="reset" value="Reset"></th>
         </tr>
     </table>
-    <table border="1" width="300px" height="1000px" style="margin-left:30%;float:top;">
+
+    <table border="1" width="300px" height="500px" style="float:top;">
     <tr>
         <th width="50" >#</th>
         <th width="200">Name</th>
@@ -276,7 +281,6 @@ require_once "function.php";
 
     </tbody>
     </table>
-    </form>  
 </div>
 
 <script>

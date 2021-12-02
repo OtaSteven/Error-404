@@ -35,7 +35,7 @@ if(isset($_GET['id']) && isset($_POST['editForm'])){
             WHERE id = $id";
 
     if($conn->query($sql) === TRUE){
-        header('Location: setEditor.php');
+        header('Location: editorHome.php');
     }else{
         echo "something went wrong";
     }

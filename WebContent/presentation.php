@@ -3,6 +3,115 @@ session_start();
 require "db_conn.php"; // Making sure this file has the connection to our database
 require_once "function.php";
 
+if(isset($_GET['id']))
+{
+  $id =  $_GET['id'];
+
+  $sql = "SELECT * FROM sets_list where ID = $id";
+  $result = $conn->query($sql);
+
+  if($result->num_rows != 1)
+  {
+    // redirect to show page
+    die('ID is not in db');
+  }
+  $data = $result->fetch_assoc();
+
+  $saveID = array();
+  
+  
+  if (!empty($data['link1']))
+  {
+    $pictureID = mysqli_query($conn,"Select ID from objectslist where link = '".$data['link1']."'");
+    $row = mysqli_fetch_assoc($pictureID);
+    array_push($saveID, $row['ID']);
+  }
+
+  if (!empty($data['link2']))
+  {
+    $pictureID =  mysqli_query($conn, "Select ID from objectslist where link = '".$data['link2']."'");
+    $row = mysqli_fetch_assoc($pictureID);
+    array_push($saveID, $row['ID']);
+  }
+
+  if (!empty($data['link3']))
+  {
+    $pictureID =  mysqli_query($conn, "Select ID from objectslist where link = '".$data['link3']."'");
+    $row = mysqli_fetch_assoc($pictureID);
+    array_push($saveID, $row['ID']);
+  }
+
+  if (!empty($data['link4']))
+  {
+    $pictureID =  mysqli_query($conn, "Select ID from objectslist where link = '".$data['link4']."'");
+    $row = mysqli_fetch_assoc($pictureID);
+    array_push($saveID, $row['ID']);
+  }
+
+  if (!empty($data['link5']))
+  {
+    $pictureID =  mysqli_query($conn, "Select ID from objectslist where link = '".$data['link5']."'");
+    $row = mysqli_fetch_assoc($pictureID);
+    array_push($saveID, $row['ID']);
+  }
+
+  if (!empty($data['link6']))
+  {
+    $pictureID =  mysqli_query($conn, "Select ID from objectslist where link = '".$data['link6']."'");
+    $row = mysqli_fetch_assoc($pictureID);
+    array_push($saveID, $row['ID']);
+  }
+
+  if (!empty($data['link7']))
+  {
+    $pictureID =  mysqli_query($conn, "Select ID from objectslist where link = '".$data['link7']."'");
+    $row = mysqli_fetch_assoc($pictureID);
+    array_push($saveID, $row['ID']);
+  }
+
+  if (!empty($data['link8']))
+  {
+    $pictureID =  mysqli_query($conn, "Select ID from objectslist where link = '".$data['link8']."'");
+    $row = mysqli_fetch_assoc($pictureID);
+    array_push($saveID, $row['ID']);
+  }
+
+  if (!empty($data['link9']))
+  {
+    $pictureID =  mysqli_query($conn, "Select ID from objectslist where link = '".$data['link9']."'");
+    $row = mysqli_fetch_assoc($pictureID);
+    array_push($saveID, $row['ID']);
+  }
+
+  if (!empty($data['link10']))
+  {
+    $pictureID =  mysqli_query($conn, "Select ID from objectslist where link = '".$data['link10']."'");
+    $row = mysqli_fetch_assoc($pictureID);
+    array_push($saveID, $row['ID']);
+  }
+
+  if (!empty($data['link11']))
+  {
+    $pictureID =  mysqli_query($conn, "Select ID from objectslist where link = '".$data['link11']."'");
+    $row = mysqli_fetch_assoc($pictureID);
+    array_push($saveID, $row['ID']);
+  }
+
+  if (!empty($data['link12']))
+  {
+    $pictureID =  mysqli_query($conn, "Select ID from objectslist where link = '".$data['link12']."'");
+    $row = mysqli_fetch_assoc($pictureID);
+    array_push($saveID, $row['ID']);
+  }
+
+  $_SESSION['saveArray'] = $saveID;       //updates the session to have correct images if user decides to present a set
+
+  header('Location: ' . $_SERVER['PHP_SELF']);      //Will revert the url to presentation.php
+}
+
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -36,7 +145,7 @@ require_once "function.php";
               <a class="nav-link" href="demo.php">Presentation</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="setEditor.php">Editor</a>
+              <a class="nav-link" href="editorHome.php">Editor</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="About.php">About</a>
@@ -89,7 +198,7 @@ require_once "function.php";
     
 
     <?php
-      if (!(isset($_POST['left']) || isset($_POST['right']) || isset($_POST['shuffle'])))
+    if (!(isset($_POST['left']) || isset($_POST['right']) || isset($_POST['shuffle'])))
         displayPicture($conn);
     ?>
     <?php
@@ -101,7 +210,7 @@ require_once "function.php";
     if(isset($_POST['right']))
     {
       shiftRight($conn);
-      displayPicture($conn);
+      displayPicture($conn); 
     }
     if(isset($_POST['shuffle']))
     {

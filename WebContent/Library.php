@@ -62,7 +62,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['username']))
               <a class="nav-link" href="demo.php">Presentation</a>
             </li>
             <?php if(isset($_SESSION['username']) && $_SESSION['Type'] == 'Admin') { ?>
-              <li class="nav-item"><a class="nav-link" href="setEditor.php">Editor</a></li>
+              <li class="nav-item"><a class="nav-link" href="editorHome.php">Editor</a></li>
             <?php } ?>
             <li class="nav-item">
               <a class="nav-link" href="About.php">About</a>

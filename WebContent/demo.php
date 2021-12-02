@@ -71,7 +71,7 @@ require_once "function.php";
                     <a class="nav-link" href="demo.php">Presentation</a>
                 </li>
                 <li class="nav-item">
-                        <a class="nav-link" href="setEditor.php">Editor</a>
+                        <a class="nav-link" href="editorHome.php">Editor</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="About.php">About</a>
@@ -165,7 +165,6 @@ if(isset($_POST['generate']))
     {
         $checkedArray = $_POST['check'];
         $_SESSION['saveArray'] = $checkedArray;
-
         $count = count($checkedArray);
 
         if ($count >= 3 and $count <= 12)
