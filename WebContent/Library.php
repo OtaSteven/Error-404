@@ -71,34 +71,37 @@ if (isset($_SESSION['id']) && isset($_SESSION['username']))
   
           <!--- Checks if user is on an account, and if they are display their username and the logout option --->
         <?php if(isset($_SESSION['username']) && isset($_SESSION['id'])) { ?>
-          <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
-              <li class="nav-item">
-                  <p class = "nav-link" style="text-decoration: none">
-                  <?php 
-                  if ($_SESSION['Type'] == 'Admin')
-                  {
-                    echo $_SESSION['username'];
-                  }
-                  else
-                  {
-                    echo 'User'.$_SESSION['id'];
-                  } ?>
-                  </p>
-              </li>
-            <li class="nav-item">
-              <a class="nav-link" href="logout.php">Logout</a>
-            </li>
-          </ul>
-          <?php } else {?> <!-- ENDING IF STATEMENT -->
-          <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
-            <li class="nav-item">
-              <a class="nav-link" href="login.html">Login</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="SignUp.html">Sign Up</a>
-            </li>
-          </ul>
-          <?php } ?>
+            <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
+                <li class="nav-item">
+                    <p class = "nav-link" style="text-decoration: none">
+                    <?php 
+                    if ($_SESSION['Type'] == 'Admin')
+                    {
+                        echo $_SESSION['username'];
+                    }
+                    else
+                    {
+                        echo 'User'.$_SESSION['id'];
+                    } ?>
+                    </p>
+                </li>
+                <?php if(isset($_SESSION['username']) && $_SESSION['Type'] == 'Admin') { ?>
+                    <li class="nav-item"><a class="nav-link" href="adminSetting.php">Setting</a></li>
+                <?php } ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="logout.php">Logout</a>
+                </li>
+            </ul>
+            <?php } else {?> <!-- ENDING IF STATEMENT -->
+                <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="SignUp.html">Sign Up</a>
+                    </li>
+                </ul>
+            <?php } ?>
   
         </div>
       </nav>

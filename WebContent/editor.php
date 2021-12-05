@@ -265,6 +265,7 @@ require_once "function.php";
     <tr>
         <th width="50" >#</th>
         <th width="200">Name</th>
+        <th width="200">Type</th>
         <th width="250">Picture</th>
     </tr>
     <tbody id = "myTableData">
@@ -275,6 +276,7 @@ require_once "function.php";
                 <tr>
                     <td id="itemID"><?php echo $row['ID']; ?></td>
                     <td id="itemName"><?php echo $row['itemName']; ?></td>
+                    <td><?php echo $row['Type']; ?></td>
                     <td><img src="<?php echo $row['link']?>" width=100px; height=100px;></td>
                 </tr>
         <?php } ?>

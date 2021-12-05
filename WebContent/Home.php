@@ -34,61 +34,63 @@ session_start();
 <body style="font-family:Helvetica, Arial, sans-serif;">
   <section class="nbar" style="background-color: #eee;">
     <nav class="navbar navbar-expand-md navbar-dark bg-dark justify-content-center">
-      
-      <a href="Home.php" class="navbar-brand mr-auto">Error 404</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+        
+    <a href="Home.php" class="navbar-brand mr-auto">Error 404</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
       
         <ul class="navbar-nav justify-content-center">
-          <li class="nav-item active">
-            <a class="nav-link" href="Home.php">Home<span class="sr-only"></span></a>
-          </li>
-          <?php if(isset($_SESSION['username']) && $_SESSION['Type'] == 'Admin') { ?>
-            <li class="nav-item"> <a class="nav-link" href="Library.php">Library</a> </li>
-          <?php } ?>
-          <li class="nav-item">
-            <a class="nav-link" href="demo.php">Presentation</a>
-          </li>
-          <?php if(isset($_SESSION['username']) && $_SESSION['Type'] == 'Admin') { ?>
-            <li class="nav-item"><a class="nav-link" href="editorHome.php">Editor</a></li>
-          <?php } ?>
-          <li class="nav-item">
-            <a class="nav-link" href="About.php">About</a>
-          </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="Home.php">Home<span class="sr-only"></span></a>
+            </li>
+            <?php if(isset($_SESSION['username']) && $_SESSION['Type'] == 'Admin') { ?>
+                <li class="nav-item"> <a class="nav-link" href="Library.php">Library</a> </li>
+            <?php } ?>
+            <li class="nav-item">
+                <a class="nav-link" href="demo.php">Presentation</a>
+            </li>
+            <?php if(isset($_SESSION['username']) && $_SESSION['Type'] == 'Admin') { ?>
+                <li class="nav-item"><a class="nav-link" href="editorHome.php">Editor</a></li>
+            <?php } ?>
+            <li class="nav-item">
+                <a class="nav-link" href="About.php">About</a>
+            </li>
         </ul>
 
         <!--- Checks if user is on an account, and if they are display their username and the logout option --->
         <?php if(isset($_SESSION['username']) && isset($_SESSION['id'])) { ?>
-          <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
-              <li class="nav-item">
-                  <p class = "nav-link" style="text-decoration: none">
-                  <?php 
-                  if ($_SESSION['Type'] == 'Admin')
-                  {
+            <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
+                <li class="nav-item">
+                <p class = "nav-link" style="text-decoration: none">
+                <?php if ($_SESSION['Type'] == 'Admin')
+                {
                     echo $_SESSION['username'];
-                  }
-                  else
-                  {
+                }
+                else
+                {
                     echo 'User'.$_SESSION['id'];
-                  } ?>
-                  </p>
-              </li>
-            <li class="nav-item">
-              <a class="nav-link" href="logout.php">Logout</a>
-            </li>
-          </ul>
-          <?php } else {?> <!-- ENDING IF STATEMENT -->
-          <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
-            <li class="nav-item">
-              <a class="nav-link" href="login.html">Login</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="SignUp.html">Sign Up</a>
-            </li>
-          </ul>
+                } ?>
+                </p>
+                </li>
+                <?php if(isset($_SESSION['username']) && $_SESSION['Type'] == 'Admin') { ?>
+                    <li class="nav-item"><a class="nav-link" href="adminSetting.php">Setting</a></li>
+                <?php } ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="logout.php">Logout</a>
+                </li>
+            </ul>
+            <?php } else {?> <!-- ENDING IF STATEMENT -->
+                <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="SignUp.html">Sign Up</a>
+                    </li>
+                </ul>
           <?php } ?>
 
       </div>

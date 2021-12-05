@@ -118,22 +118,25 @@ require_once "function.php";
 					<ul class="nav navbar-nav ml-auto w-100 justify-content-end">
 						<li class="nav-item">
 							<p class = "nav-link" style="text-decoration: none">
-								<?php 
-								if ($_SESSION['Type'] == 'Admin')
-								{
-									echo $_SESSION['username'];
-								}
-								else
-								{
-									echo 'User'.$_SESSION['id'];
-								} ?>
+							<?php 
+							if ($_SESSION['Type'] == 'Admin')
+							{
+								echo $_SESSION['username'];
+							}
+							else
+							{
+								echo 'User'.$_SESSION['id'];
+							} ?>
 							</p>
 						</li>
+						<?php if(isset($_SESSION['username']) && $_SESSION['Type'] == 'Admin') { ?>
+							<li class="nav-item"><a class="nav-link" href="adminSetting.php">Setting</a></li>
+            			<?php } ?>
 						<li class="nav-item">
 							<a class="nav-link" href="logout.php">Logout</a>
 						</li>
 					</ul>
-					<?php } else {?> <!-- ENDING IF STATEMENT -->
+				<?php } else {?> <!-- ENDING IF STATEMENT -->
 					<ul class="nav navbar-nav ml-auto w-100 justify-content-end">
 						<li class="nav-item">
 							<a class="nav-link" href="login.html">Login</a>
