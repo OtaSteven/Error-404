@@ -121,6 +121,7 @@ if(isset($_GET['id']))
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">  <!-- Connecting to bootstrap -->
     <link rel="stylesheet" type="text/css" href="css/style.css"> <!-- Specific file for all customization-->
 
+    <title>Set Presenter</title>
   </head>       <!-- End of Head -->
 
   <body style="font-family:arial;">
@@ -187,9 +188,12 @@ if(isset($_GET['id']))
     </section>
 
     <form method="POST">
-    <div style="text-align: center;">
+    <div style="text-align: center; margin-top: 0.5%;">
       <input style="margin-right: 25%; height: 50px" type="submit" name="left" value="<< Left">
-      <input style="height: 50px" type="submit" name="shuffle" value="Shuffle">
+      <a href="demo.php">
+        <input style="height: 50px; margin-right: 2.5%" type="button" name="return" value="Return"> <!-- done this way to make stylizing equal to other inputs; close tab exit not possible -->
+      </a>
+      <input style="height: 50px;" type="submit" name="shuffle" value="Shuffle">
       <input style="margin-left: 25%; height: 50px"type="submit" name="right" value="Right >>">
     </div>
     </form>
