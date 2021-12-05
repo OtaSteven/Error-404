@@ -103,8 +103,8 @@ session_start();
       <div class="welcome">
         <h1 class="fw-bolder">Welcome to the Web App</h1>
         <p class="fw-bold">A simple page to help you get started using the app. With the buttons below, you can Get Started and sign up or try our demo. Scroll down for more information.</p>
-        <a class="btn btn-primary btn-lg px-4 me-sm-3" href="SignUp.html" target="_blank">Get Started</a>
-        <a class="btn btn-outline-dark btn-lg px-4" href="demo.php" target="_blank">Demo</a> <!-- links to presentation page -->
+        <a class="btn btn-primary btn-lg px-4 me-sm-3" href="SignUp.html">Get Started</a>
+        <a class="btn btn-outline-dark btn-lg px-4" href="demo.php">Demo</a> <!-- links to presentation page -->
       </div>
     </header>
 
