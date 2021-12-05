@@ -17,7 +17,7 @@ require_once "function.php";
 	<!-- Getting the js file we made -->
 	<!--- <script src="script.js"></script> -->
 
-	<title>Home</title>
+	<title>Set Menu</title>
 	<style>
 		table {
 			overflow-y: scroll;

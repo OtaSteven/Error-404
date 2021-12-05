@@ -37,7 +37,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['username']))
           background-color: white;
         }
     </style>
-  
+    
+    <title>Library</title>
   </head>       <!-- End of Head -->
 
   <body style="font-family:arial;">
