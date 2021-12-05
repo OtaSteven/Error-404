@@ -156,7 +156,7 @@ require_once "function.php";
 	<br>
 
 	<?php
-	$imageSet = mysqli_query($conn, "Select * from sets_list");
+	$imageSet = mysqli_query($conn, "Select * from sets_list where ID > 0");
     while ($row = mysqli_fetch_assoc($imageSet))
     {
 		echo '<div class="container">';

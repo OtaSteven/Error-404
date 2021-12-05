@@ -120,36 +120,36 @@ require_once "function.php";
 <div style='float:left'>
 <h3 style='text-align:center; padding-left:100px'><label id="totalCheckedBoxes">Total Items Selected: 0</label></h3>
 <form method="POST">
-<table width="300" height= "50px" style="margin-left:10%; overflow-y:hidden; background-color:black">
-<tr height="50px">
-	<th><input style="background-color: #79BBEB; width: 65px; height: 50px; color:black;" type="submit" name="searchIcon" value="Search" disabled></th>
-	<th><input size="37px" type="text" id="itemToSearch" placeholder="Enter picture/id" style="text-align: center"></th>
-	<th><input type = "submit" name ="reset" value="Reset"></th>
-	</tr>
-</table>
-<table border="1" width="300" height="750px" style="margin-left:10%; float:top;">
-	<tr>
-	<th width="50" >#</th>
-	<th width="200">Name</th>
-    <th width="200">Type</th>
-	<th width="100">Picture</th>
-	<th width="100">Check</th>
-	</tr>
-	<tbody id = "myTableData">
-	<?php
-	$search_result = mysqli_query($conn,"select * from objectslist");
-	while($data = mysqli_fetch_array($search_result)) 
-	{ ?>
-	<tr>
-	<td><?php echo $data['ID']; ?></td>
-	<td><?php echo $data['itemName']; ?></td>
-    <td><?php echo $data['Type']; ?></td>
-	<td><img src="<?php echo $data['link']?>" width=50px; height=50px;></td>
-	<td style="text-align: center; vertical-align: middle"><input class="larger" type="checkbox" name='check[]' value="<?php echo $data['ID'];?>" onchange="whenBoxIsChecked()"></td>
-<?php } ?>
-	</tr>
-	</tbody>
-</table>
+    <table width="300" height= "50px" style="margin-left:10%; overflow-y:hidden; background-color:black">
+        <tr height="50px">
+	        <th><input style="background-color: #79BBEB; width: 65px; height: 50px; color:black;" type="submit" name="searchIcon" value="Search" disabled></th>
+            <th><input size="37px" type="text" id="itemToSearch" placeholder="Enter picture/id" style="text-align: center"></th>
+            <th><input type = "submit" name ="reset" value="Reset"></th>
+	    </tr>
+    </table>
+    <table border="1" width="300" height="750px" style="margin-left:10%; float:top;">
+	    <tr>
+            <th width="50" >#</th>
+            <th width="200">Name</th>
+            <th width="200">Type</th>
+            <th width="100">Picture</th>
+            <th width="100">Check</th>
+	    </tr>
+	    <tbody id = "myTableData">
+        <?php
+        $search_result = mysqli_query($conn,"select * from objectslist");
+        while($data = mysqli_fetch_array($search_result)) 
+        { ?>
+            <tr>
+                <td><?php echo $data['ID']; ?></td>
+                <td><?php echo $data['itemName']; ?></td>
+                <td><?php echo $data['Type']; ?></td>
+                <td><img src="<?php echo $data['link']?>" width=50px; height=50px;></td>
+                <td style="text-align: center; vertical-align: middle"><input class="larger" type="checkbox" name='check[]' value="<?php echo $data['ID'];?>" onchange="whenBoxIsChecked()"></td>
+            </tr>
+        <?php } ?>
+	    </tbody>
+    </table>
 <br>
 <input type="submit" class="genClass" name="generate" value="Generate" style="height:50px; width:225px; margin-left: 40%;">
 <br><br>
