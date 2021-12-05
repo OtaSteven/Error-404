@@ -188,9 +188,9 @@ if(isset($_GET['id']))
 
     <form method="POST">
     <div style="text-align: center;">
-      <input style="margin-right: 5%;" type="submit" name="left" value="<< Left">
-      <input type="submit" name="shuffle" value="Shuffle">
-      <input style="margin-left: 5%;"type="submit" name="right" value="Right >>">
+      <input style="margin-right: 25%; height: 50px" type="submit" name="left" value="<< Left">
+      <input style="height: 50px" type="submit" name="shuffle" value="Shuffle">
+      <input style="margin-left: 25%; height: 50px"type="submit" name="right" value="Right >>">
     </div>
     </form>
 
