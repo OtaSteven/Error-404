@@ -190,9 +190,7 @@ if(isset($_GET['id']))
     <form method="POST">
     <div style="text-align: center; margin-top: 0.5%;">
       <input style="margin-right: 25%; height: 50px" type="submit" name="left" value="<< Left">
-      <a href="demo.php">
-        <input style="height: 50px; margin-right: 2.5%" type="button" name="return" value="Return"> <!-- done this way to make stylizing equal to other inputs; close tab exit not possible -->
-      </a>
+      <a class="returnButton"href="demo.php">Return</a> 
       <input style="height: 50px;" type="submit" name="shuffle" value="Shuffle">
       <input style="margin-left: 25%; height: 50px"type="submit" name="right" value="Right >>">
     </div>

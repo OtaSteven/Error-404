@@ -110,3 +110,23 @@ header /* background for header */
   float: left;
   display: inline;
 }
+.returnButton /* presentation return button */
+{
+  height: 50px;
+  margin-right: 2.5%;
+  font: 16px Arial;
+  text-decoration: none;
+  background-color: #e9e8ed;
+  color: #080204;
+  padding-top: 15.25px;
+  padding-bottom: 15.5px;
+  padding-right: 5px;
+  padding-left: 5px;
+  border: 1px solid #908f94;
+  border-radius: 6.5%;
+}
+.returnButton:hover
+{
+  background-color: #d0d0d8;
+  color: #080204;
+}
