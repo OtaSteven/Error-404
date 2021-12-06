@@ -127,7 +127,7 @@ require_once "function.php";
             <th><input type = "submit" name ="reset" value="Reset"></th>
 	    </tr>
     </table>
-    <table border="1" width="300" height="750px" style="margin-left:10%; float:top;">
+    <table border="1" width="300" height="700px" style="margin-left:10%; float:top;">
 	    <tr>
             <th width="50" >#</th>
             <th width="200">Name</th>
@@ -151,13 +151,69 @@ require_once "function.php";
 	    </tbody>
     </table>
 <br>
-<input type="submit" class="genClass" name="generate" value="Generate" style="height:50px; width:225px; margin-left: 40%;">
+<input type="submit"  name="generate" value="Generate" data-inline="true" style="height:50px; width:225px; margin-left: 25%;">
+<input type="submit"  name="save" value="Save" data-inline="true" style="height:50px; width:225px;">
 <br><br>
 </form>
 <br>
 </div>
 
 <!--- RIGHT SIDE OF THE SCREEN WHERE PICTURES ARE DISPLAY --->
+<div style='float:right'>
+<?php
+if (isset($_POST['reset']) || isset($_POST['searchIcon']))
+{
+    $_PUT['itemToSearch'] = '';
+}
+if(isset($_POST['generate']))
+{
+    if(!empty($_POST['check']))
+    {
+        $checkedArray = $_POST['check'];
+        $_SESSION['saveArray'] = $checkedArray;
+        $count = count($checkedArray);
+
+        if ($count >= 3 and $count <= 12)
+        {
+            foreach($_SESSION['saveArray'] as $value)
+            {
+                // write query for all entry_details
+                $sql = "Select * from objectslist where id = '$value'";
+                // make query and get result
+                $result = mysqli_query($conn, $sql);
+                if ($result->num_rows > 0)
+                {
+                        echo '<div class=container>';
+                        echo '<div class="column">';
+                        while ($row = mysqli_fetch_assoc($result))
+                        {
+                        echo '<img src="'.$row['link'].'">';
+                        }
+                        echo '</div>';
+                        echo '</div>';
+                        //print_r($row);       //prints out all the data in $row (a certain row in the database)
+                }
+                else
+                {
+                        header("Location: demo.php?error=obtaining picture");
+                        echo "<script>alert('Error getting pictures');</script>";
+                }
+                //echo "ID of picture: ".$value.' ';
+            }
+            echo '<a class="btn btn-primary btn-lg px-4 me-sm-3" href="presentation.php" target="_blank">Present</a>';
+        }
+        else
+        {
+            echo "<script>alert('Make sure the pictures are between 3 ~ 12.');</script>";
+        }
+    }
+    else{
+        echo "<script>alert('Nothing is selected');</script>"; 
+    }
+}
+?>
+</div>
+<!-- Begin Save Button -->
 <div style='float:right'>
 <?php
 if (isset($_POST['reset']) || isset($_POST['searchIcon']))
