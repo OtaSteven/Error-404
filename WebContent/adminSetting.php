@@ -17,10 +17,19 @@ require_once "function.php";
     <title>Setting</title>
 
     <style>
-        table.center
+        table
         {
             margin-left: auto;
             margin-right: auto;
+            max-height: 400px;
+        }
+        table.leftSide
+        {
+            left: 0;
+        }
+        table.rightSide
+        {
+            right: 0;
         }
         table.items
         {
@@ -28,14 +37,18 @@ require_once "function.php";
             display: block;
             position: relative;
         }
-        th
+        th 
         {
-            border: solid black;
+            position: sticky;
+            border: solid purple;
             padding: 10px;
+            top: 0;
+            background-color: black;
+            color: white;
         }
         td
         {
-            border: solid black;
+            border: solid purple;
             padding: 10px;
         }
     </style>
@@ -112,21 +125,61 @@ require_once "function.php";
   </section>
 
 <!-- landing page welcome and body -->
+<table border="solid black" class="rightSide items" width="535px" style="text-align:center;">
+    <tr>
+        <th colspan="4" style="font-size: 24px;">Database</th>
+        <th><button style="background-color: #ace5ee; border-radius: 5px; height: 60px"><a style="text-decoration: none; color: black;" href="<?php  $_SERVER['PHP_SELF']; ?>">Refresh</a></button></th>
+    </tr>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Assign Set 1</th>
+        <th>Assign Set 2</th>
+        <th>Assign Set 3</th>
+    </tr>
+    <tbody id = "myTableData">
+    <?php
+        $search_result = mysqli_query($conn,"select * from entry_details");
+        $setResult = mysqli_query($conn,"select * from sets_list");
+        while($data = mysqli_fetch_array($search_result)) 
+        { ?>
+        <tr>
+            <td><input type="hidden" name = "userID[]" value = "<?php echo $data['id']; ?>"><?php echo $data['id']; ?></td>
+            <td><?php echo $data['username']; ?></td>
+            <td><?php echo $data['Set1']; ?></td>
+            <td><?php echo $data['Set2']; ?></td>
+            <td><?php echo $data['Set3']; ?></td>
+        </tr>
+    <?php } ?>  
+</tbody>
+</table> 
+
+<br>
+
 <form method="POST">
-    <table border="solid black" class="center" width="535px" style="text-align:center;">
+    <table border="solid black" class="leftSide" width="535px" style="text-align:center;">
         <tr height="50px">
 	        <th><input style="background-color: #79BBEB; width: 65px; height: 50px; color:black;" type="submit" name="searchIcon" value="Search" disabled></th>
             <th><input size="37px" type="text" id="itemToSearch" placeholder="Enter ID/Name" style="text-align: center"></th>
             <th><input type = "submit" name ="reset" value="Reset"></th>
 	    </tr>
     </table>
-    <table border="solid black" class="center items" width="535px" style="text-align:center;">
+</form>
+
+<br>
+
+<form method="POST">
+    <table border="solid black" class="leftSide items" width="608px" style="text-align:center;">
+        <tr>
+            <th colspan="6" style="font-size: 24px;">Set Selection</th>
+        </tr>
         <tr>
             <th>ID</th>
             <th>Name</th>
             <th>Assign Set 1</th>
             <th>Assign Set 2</th>
             <th>Assign Set 3</th>
+            <th>Save</th>
         </tr>
         <tbody id = "myTableData">
         <?php
@@ -135,38 +188,61 @@ require_once "function.php";
             while($data = mysqli_fetch_array($search_result)) 
             { ?>
             <tr>
-                <td><?php echo $data['id']; ?></td>
+                <td><input type="hidden" name = "userID[]" value = "<?php echo $data['id']; ?>"><?php echo $data['id']; ?></td>
                 <td><?php echo $data['username']; ?></td>
                 
-                <td>
-                    <select name="sets" id="set">
+                <td class = "row-data">
+                    <select id="userSet2" name="userSet1[]">
+                    
                     <?php foreach($setResult as $rowSet)
                     { ?>
-                        <option value="<?php $rowSet['ID'] ?>"><?php echo $rowSet['setName']; ?></option>
+                        <option value="<?php echo $rowSet['setName']; ?>"><?php echo $rowSet['setName']; ?></option>
+                    <?php } ?>
+                    </select>
+                </td>
+                <td class = "row-data">
+                    <select id="userSet2" name="userSet2[]">
+                    
+                    <?php foreach($setResult as $rowSet)
+                    { ?>
+                        <option value="<?php echo $rowSet['setName']; ?>"><?php echo $rowSet['setName']; ?></option>
+                    <?php } ?>
+                    </select>
+                </td>
+                <td class = "row-data">
+                    <select id="userSet3" name="userSet3[]">
+                    <?php foreach($setResult as $rowSet)
+                    { ?>
+                        <option value="<?php echo $rowSet['setName']; ?>"><?php echo $rowSet['setName']; ?></option>
                     <?php } ?>
                     </select>
                 </td>
                 <td>
-                    <select name="sets" id="set">
-                    <?php foreach($setResult as $rowSet)
-                    { ?>
-                        <option value="<?php $rowSet['ID'] ?>"><?php echo $rowSet['setName']; ?></option>
-                    <?php } ?>
-                    </select>
-                </td>
-                <td>
-                    <select name="sets" id="set">
-                    <?php foreach($setResult as $rowSet)
-                    { ?>
-                        <option value="<?php $rowSet['ID'] ?>"><?php echo $rowSet['setName']; ?></option>
-                    <?php } ?>
-                    </select>
+                    <button name="save" value="<?php echo $data['id']; ?>">Save</button>
+                    <!---<input type="submit" name="save[]" value="Submit" onclick="show()" /> --->
                 </td>
             </tr>
-            <?php } ?>
-	    </tbody>
-    </table>
+        <?php } ?>  
+	</tbody>
+    </table> 
 </form>
+
+
+
+
+
+<?php
+if (isset($_POST['save']))      //When the button name 'save' is click on
+{
+    $userID = $_POST['userID'];
+    $button = $_POST['save'];
+    $set1 = $_POST['userSet1'];
+    $set2 = $_POST['userSet2'];
+    $set3 = $_POST['userSet3'];
+
+    updateTableSet($conn, $userID, $button, $set1, $set2, $set3);
+}
+?>
 
 <script>
 $(document).ready(function()

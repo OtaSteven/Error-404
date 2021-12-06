@@ -61,3 +61,52 @@ function shufflePicture($conn)
 {
     shuffle($_SESSION['saveArray']);
 }
+
+function updateTableSet($conn, $userID, $button, $set1, $set2, $set3)
+{
+    /*
+    print_r($userID);
+    echo "<br>";
+    print_r($_SESSION['set1']);
+    echo "<br>";
+    print_r($_SESSION['set2']);
+    echo "<br>";
+    print_r($_SESSION['set3']);
+    echo "<br>";
+    */
+
+    foreach($userID as $value)
+    {
+        if ($button == $value)
+        {
+            // write query for all entry_details
+            $sql = "Select * from entry_details where id = '$value'";
+            // make query and get result
+            $result = mysqli_query($conn, $sql);
+            if ($result->num_rows > 0)
+            {
+                    while ($row = mysqli_fetch_assoc($result))
+                    {
+                        $tableUpdate = 'Update entry_details SET Set1 = "'.$set1[$value-1].'", Set2 = "'.$set2[$value-1].'", Set3 = "'.$set3[$value-1].'" where id = "'.$value.'"';
+                    
+                        //If statements to make sure that the connection and our inputs are successfully inserted into the database
+                        if (mysqli_query($conn, $tableUpdate))
+                        {
+                            echo '<script>alert("Successfully update the table")</script>';
+                        }
+                        else
+                        {
+                            echo "Error" . mysqli_error($conn);
+                        }
+                        
+                    }
+                    //print_r($row);       //prints out all the data in $row (a certain row in the database)
+            }
+            else
+            {
+                echo "<script>alert('No selection made');</script>";
+            }
+        }
+    }
+}
+
