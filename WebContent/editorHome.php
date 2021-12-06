@@ -99,15 +99,17 @@ require_once "function.php";
 					<li class="nav-item active">
 						<a class="nav-link" href="Home.php">Home<span class="sr-only"></span></a>
 					</li>
-					<?php if(isset($_SESSION['username']) && $_SESSION['Type'] == 'Admin') { ?>
-							<li class="nav-item"> <a class="nav-link" href="Library.php">Library</a> </li>
-						<?php } ?>
+					<?php if(isset($_SESSION['username']) && ($_SESSION['Type'] == 'Admin' || $_SESSION['Type'] == 'Teacher')) { ?>
+					<li class="nav-item"> <a class="nav-link" href="Library.php">Library</a> </li>
+					<?php } ?>
 					<li class="nav-item">
-						<a class="nav-link" href="demo.php">Presentation</a>
+					<a class="nav-link" href="demo.php">Presentation</a>
 					</li>
+					<?php if(isset($_SESSION['username']) && ($_SESSION['Type'] == 'Admin' || $_SESSION['Type'] == 'Parent' || $_SESSION['Type'] == 'Teacher')) { ?>
 					<li class="nav-item">
 						<a class="nav-link" href="editorHome.php">Editor</a>
 					</li>
+					<?php } ?>
 					<li class="nav-item">
 						<a class="nav-link" href="About.php">About</a>
 					</li>
@@ -123,13 +125,17 @@ require_once "function.php";
 							{
 								echo $_SESSION['username'];
 							}
+							else if ($_SESSION['Type'] == 'Teacher')
+							{
+								echo 'Teacher'.$_SESSION['id'];
+							}
 							else
 							{
 								echo 'User'.$_SESSION['id'];
 							} ?>
 							</p>
 						</li>
-						<?php if(isset($_SESSION['username']) && $_SESSION['Type'] == 'Admin') { ?>
+						<?php if(isset($_SESSION['username']) && ($_SESSION['Type'] == 'Admin' || $_SESSION['Type'] == 'Teacher')) { ?>
 							<li class="nav-item"><a class="nav-link" href="adminSetting.php">Setting</a></li>
             			<?php } ?>
 						<li class="nav-item">
@@ -214,7 +220,10 @@ require_once "function.php";
 
 			echo '<div class="content">';
 			echo '<br>';
-			echo "<a style='text-decoration:none; margin-right: 1%;' href='editor.php?id=".$row['ID']."'><button style='background-color: #ffe599;'>Edit Set</button></a>";
+			if ($_SESSION['Type'] == 'Teacher')
+			{
+				echo "<a style='text-decoration:none; margin-right: 1%;' href='editor.php?id=".$row['ID']."'><button style='background-color: #ffe599;'>Edit Set</button></a>";
+			}
 			echo "<a style='text-decoration:none' href='presentation.php?id=".$row['ID']."'><button style='background-color: #b6d7a8;'>Present Set</button></a>";
 			echo '<br>';
 

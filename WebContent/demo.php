@@ -64,15 +64,17 @@ require_once "function.php";
                 <li class="nav-item active">
                     <a class="nav-link" href="Home.php">Home<span class="sr-only"></span></a>
                 </li>
-                <?php if(isset($_SESSION['username']) && $_SESSION['Type'] == 'Admin') { ?>
-                        <li class="nav-item"> <a class="nav-link" href="Library.php">Library</a> </li>
-                    <?php } ?>
-                <li class="nav-item">
-                    <a class="nav-link" href="demo.php">Presentation</a>
-                </li>
-                <?php if(isset($_SESSION['username']) && $_SESSION['Type'] == 'Admin') { ?>
-                    <li class="nav-item"><a class="nav-link" href="editorHome.php">Editor</a></li>
-                <?php } ?>
+                <?php if(isset($_SESSION['username']) && ($_SESSION['Type'] == 'Admin' || $_SESSION['Type'] == 'Teacher')) { ?>
+					<li class="nav-item"> <a class="nav-link" href="Library.php">Library</a> </li>
+					<?php } ?>
+					<li class="nav-item">
+					<a class="nav-link" href="demo.php">Presentation</a>
+					</li>
+					<?php if(isset($_SESSION['username']) && ($_SESSION['Type'] == 'Admin' || $_SESSION['Type'] == 'Parent' || $_SESSION['Type'] == 'Teacher')) { ?>
+					<li class="nav-item">
+						<a class="nav-link" href="editorHome.php">Editor</a>
+					</li>
+					<?php } ?>
                 <li class="nav-item">
                     <a class="nav-link" href="About.php">About</a>
                 </li>
@@ -88,13 +90,17 @@ require_once "function.php";
                     {
                       echo $_SESSION['username'];
                     }
+                    else if ($_SESSION['Type'] == 'Teacher')
+                    {
+                        echo 'Teacher'.$_SESSION['id'];
+                    }
                     else
                     {
                       echo 'User'.$_SESSION['id'];
                     } ?>
                     </p>
                   </li>
-                  <?php if(isset($_SESSION['username']) && $_SESSION['Type'] == 'Admin') { ?>
+                  <?php if(isset($_SESSION['username']) && ($_SESSION['Type'] == 'Admin' || $_SESSION['Type'] == 'Teacher')) { ?>
                     <li class="nav-item"><a class="nav-link" href="adminSetting.php">Setting</a></li>
                   <?php } ?>
                   <li class="nav-item">
@@ -154,6 +160,7 @@ require_once "function.php";
 <input type="submit"  name="generate" value="Generate" data-inline="true" style="height:50px; width:225px; margin-left: 25%;">
 <input type="submit"  name="save" value="Save" data-inline="true" style="height:50px; width:225px;">
 <br><br>
+<input type="text" name="setName" style="height:50px; width:450px; margin-left: 25%; text-align: center" placeholder="Enter Set name">
 </form>
 <br>
 </div>
@@ -187,7 +194,7 @@ if(isset($_POST['generate']))
                         echo '<div class="column">';
                         while ($row = mysqli_fetch_assoc($result))
                         {
-                        echo '<img src="'.$row['link'].'">';
+                            echo '<img src="'.$row['link'].'">';
                         }
                         echo '</div>';
                         echo '</div>';
@@ -195,6 +202,7 @@ if(isset($_POST['generate']))
                 }
                 else
                 {
+                        $_SESSION['saveArray'] = '';
                         header("Location: demo.php?error=obtaining picture");
                         echo "<script>alert('Error getting pictures');</script>";
                 }
@@ -212,72 +220,53 @@ if(isset($_POST['generate']))
     }
 }
 //Begin Save Button 
-if(isset($_POST['save']))
+if(isset($_POST['save']) && $_POST['setName'] != '')
 {
+    $setName = $_POST['setName'];
     //beginning of code for save
-    $saveArray = $_SESSION['saveArray'];
-    foreach($saveArray as $valueSave)
+    foreach($_SESSION['saveArray'] as $valueSave)
     {
-        
-        $x[] = $valueSave;
-        echo 'output 1';
+        $sql = "Select * from objectslist where id = '$valueSave'";
+        $result = mysqli_query($conn, $sql);
+        if ($result->num_rows > 0)
+        {
+                while ($row = mysqli_fetch_assoc($result))
+                {
+                    $x[] = $row['link'];
+                }
+                //print_r($row);       //prints out all the data in $row (a certain row in the database)
+        }
+        else
+        {
+                header("Location: demo.php?error=obtaining picture");
+                echo "<script>alert('Error getting pictures');</script>";
+        }
+        /*echo 'output: ';
         print_r($valueSave);
+        echo '<br>';*/
     }
-    if($x[0] == NULL)
+    for ($i = count($_SESSION['saveArray']); $i < 12; $i++)
     {
-        $x[0] = '';
+        $x[$i] = '';
     }
-    if($x[1] == NULL)
-    {
-        $x[1] = '';
-    }
-    if($x[2] == NULL)
-    {
-        $x[2] = '';
-    }
-    if($x[3] == NULL)
-    {
-        $x[3] = '';
-    }
-    if($x[4] == NULL)
-    {
-        $x[4] = '';
-    }
-    if($x[5] == NULL)
-    {
-        $x[5] = '';
-    }
-    if($x[6] == NULL)
-    {
-        $x[6] = '';
-    }
-    if($x[7] == NULL)
-    {
-        $x[7] = '';
-    }
-    if($x[8] == NULL)
-    {
-        $x[8] = '';
-    }
-    if($x[9] == NULL)
-    {
-        $x[9] = '';
-    }
-    if($x[10] == NULL)
-    {
-        $x[10] = '';
-    }
-    if($x[11] == NULL)
-    {
-        $x[11] = '';
-    }
-    
-    $sqlSave = "INSERT INTO sets_list (link1, link2, link3, link4, link5, link6, link7, link8, link9, link10, link11, link12) 
-    VALUES ($x[0], $x[1], $x[2], $x[3], $x[4], $x[5], $x[6], $x[7] , $x[8], $x[9], $x[10], $x[11])";
-    print_r($sqlSave);
 
-    
+    $sqlSave = "INSERT INTO sets_list (setName, link1, link2, link3, link4, link5, link6, link7, link8, link9, link10, link11, link12) 
+    VALUES ('$setName', '$x[0]', '$x[1]', '$x[2]', '$x[3]', '$x[4]', '$x[5]', '$x[6]', '$x[7]', '$x[8]', '$x[9]', '$x[10]', '$x[11]')";
+    //print_r($sqlSave);
 
+    //If statements to make sure that the connection and our inputs are successfully inserted into the database
+    if (mysqli_query($conn, $sqlSave))
+    {
+        echo "New Details Entry inserted successfully!";
+    }
+    else
+    {
+        echo "Error" . mysqli_error($conn);
+    }
+}
+else if (isset($_POST['save']) && $_POST['setName'] == '')
+{
+    echo "<script>alert('Enter a Set name before saving');</script>";
 }
 ?>
 </div>

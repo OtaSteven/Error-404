@@ -56,15 +56,17 @@ if (isset($_SESSION['id']) && isset($_SESSION['username']))
             <li class="nav-item active">
               <a class="nav-link" href="Home.php">Home<span class="sr-only"></span></a>
             </li>
-            <?php if(isset($_SESSION['username']) && $_SESSION['Type'] == 'Admin') { ?>
-              <li class="nav-item"> <a class="nav-link" href="Library.php">Library</a> </li>
-            <?php } ?>
-            <li class="nav-item">
-              <a class="nav-link" href="demo.php">Presentation</a>
-            </li>
-            <?php if(isset($_SESSION['username']) && $_SESSION['Type'] == 'Admin') { ?>
-              <li class="nav-item"><a class="nav-link" href="editorHome.php">Editor</a></li>
-            <?php } ?>
+            <?php if(isset($_SESSION['username']) && ($_SESSION['Type'] == 'Admin' || $_SESSION['Type'] == 'Teacher')) { ?>
+					<li class="nav-item"> <a class="nav-link" href="Library.php">Library</a> </li>
+					<?php } ?>
+					<li class="nav-item">
+					<a class="nav-link" href="demo.php">Presentation</a>
+					</li>
+					<?php if(isset($_SESSION['username']) && ($_SESSION['Type'] == 'Admin' || $_SESSION['Type'] == 'Parent' || $_SESSION['Type'] == 'Teacher')) { ?>
+					<li class="nav-item">
+						<a class="nav-link" href="editorHome.php">Editor</a>
+					</li>
+					<?php } ?>
             <li class="nav-item">
               <a class="nav-link" href="About.php">About</a>
             </li>
@@ -80,13 +82,17 @@ if (isset($_SESSION['id']) && isset($_SESSION['username']))
                     {
                         echo $_SESSION['username'];
                     }
+                    else if ($_SESSION['Type'] == 'Teacher')
+                    {
+                      echo 'Teacher'.$_SESSION['id'];
+                    }
                     else
                     {
                         echo 'User'.$_SESSION['id'];
                     } ?>
                     </p>
                 </li>
-                <?php if(isset($_SESSION['username']) && $_SESSION['Type'] == 'Admin') { ?>
+                <?php if(isset($_SESSION['username']) && ($_SESSION['Type'] == 'Admin' || $_SESSION['Type'] == 'Teacher')) { ?>
                     <li class="nav-item"><a class="nav-link" href="adminSetting.php">Setting</a></li>
                 <?php } ?>
                 <li class="nav-item">
