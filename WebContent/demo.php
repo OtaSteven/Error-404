@@ -211,64 +211,77 @@ if(isset($_POST['generate']))
         echo "<script>alert('Nothing is selected');</script>"; 
     }
 }
-?>
-</div>
-<!-- Begin Save Button -->
-<div style='float:right'>
-<?php
-if (isset($_POST['reset']) || isset($_POST['searchIcon']))
+//Begin Save Button 
+if(isset($_POST['save']))
 {
-    $_PUT['itemToSearch'] = '';
-}
-if(isset($_POST['generate']))
-{
-    if(!empty($_POST['check']))
+    //beginning of code for save
+    $saveArray = $_SESSION['saveArray'];
+    foreach($saveArray as $valueSave)
     {
-        $checkedArray = $_POST['check'];
-        $_SESSION['saveArray'] = $checkedArray;
-        $count = count($checkedArray);
+        
+        $x[] = $valueSave;
+        echo 'output 1';
+        print_r($valueSave);
+    }
+    if($x[0] == NULL)
+    {
+        $x[0] = '';
+    }
+    if($x[1] == NULL)
+    {
+        $x[1] = '';
+    }
+    if($x[2] == NULL)
+    {
+        $x[2] = '';
+    }
+    if($x[3] == NULL)
+    {
+        $x[3] = '';
+    }
+    if($x[4] == NULL)
+    {
+        $x[4] = '';
+    }
+    if($x[5] == NULL)
+    {
+        $x[5] = '';
+    }
+    if($x[6] == NULL)
+    {
+        $x[6] = '';
+    }
+    if($x[7] == NULL)
+    {
+        $x[7] = '';
+    }
+    if($x[8] == NULL)
+    {
+        $x[8] = '';
+    }
+    if($x[9] == NULL)
+    {
+        $x[9] = '';
+    }
+    if($x[10] == NULL)
+    {
+        $x[10] = '';
+    }
+    if($x[11] == NULL)
+    {
+        $x[11] = '';
+    }
+    
+    $sqlSave = "INSERT INTO sets_list (link1, link2, link3, link4, link5, link6, link7, link8, link9, link10, link11, link12) 
+    VALUES ($x[0], $x[1], $x[2], $x[3], $x[4], $x[5], $x[6], $x[7] , $x[8], $x[9], $x[10], $x[11])";
+    print_r($sqlSave);
 
-        if ($count >= 3 and $count <= 12)
-        {
-            foreach($_SESSION['saveArray'] as $value)
-            {
-                // write query for all entry_details
-                $sql = "Select * from objectslist where id = '$value'";
-                // make query and get result
-                $result = mysqli_query($conn, $sql);
-                if ($result->num_rows > 0)
-                {
-                        echo '<div class=container>';
-                        echo '<div class="column">';
-                        while ($row = mysqli_fetch_assoc($result))
-                        {
-                        echo '<img src="'.$row['link'].'">';
-                        }
-                        echo '</div>';
-                        echo '</div>';
-                        //print_r($row);       //prints out all the data in $row (a certain row in the database)
-                }
-                else
-                {
-                        header("Location: demo.php?error=obtaining picture");
-                        echo "<script>alert('Error getting pictures');</script>";
-                }
-                //echo "ID of picture: ".$value.' ';
-            }
-            echo '<a class="btn btn-primary btn-lg px-4 me-sm-3" href="presentation.php" target="_blank">Present</a>';
-        }
-        else
-        {
-            echo "<script>alert('Make sure the pictures are between 3 ~ 12.');</script>";
-        }
-    }
-    else{
-        echo "<script>alert('Nothing is selected');</script>"; 
-    }
+    
+
 }
 ?>
 </div>
-
+<!-- End Save Button -->
 <script>
 $("input[type=checkbox]").on("click", function () 
 {
