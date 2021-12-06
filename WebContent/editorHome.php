@@ -156,49 +156,98 @@ require_once "function.php";
 	<br>
 
 	<?php
-	$imageSet = mysqli_query($conn, "Select * from sets_list where ID > 0");
-    while ($row = mysqli_fetch_assoc($imageSet))
-    {
-		echo '<div class="container">';
-		echo '<button type="button" class="collapsible" style="font-size: 32px">';
-		echo $row['setName'];
-		echo '</button>';
+	if ($_SESSION['Type'] == 'Admin')
+	{
+		$imageSet = mysqli_query($conn, "Select * from sets_list");
+		while ($row = mysqli_fetch_assoc($imageSet))
+		{
+			echo '<div class="container">';
+			echo '<button type="button" class="collapsible" style="font-size: 32px">';
+			echo $row['setName'];
+			echo '</button>';
 
-		echo '<div class="content">';
-		echo '<br>';
-		echo "<a style='text-decoration:none; margin-right: 1%;' href='editor.php?id=".$row['ID']."'><button style='background-color: #ffe599;'>Edit Set</button></a>";
-		echo "<a style='text-decoration:none' href='presentation.php?id=".$row['ID']."'><button style='background-color: #b6d7a8;'>Present Set</button></a>";
-		echo '<br>';
+			echo '<div class="content">';
+			echo '<br>';
+			echo "<a style='text-decoration:none; margin-right: 1%;' href='editor.php?id=".$row['ID']."'><button style='background-color: #ffe599;'>Edit Set</button></a>";
+			echo "<a style='text-decoration:none' href='presentation.php?id=".$row['ID']."'><button style='background-color: #b6d7a8;'>Present Set</button></a>";
+			echo '<br>';
 
-		if (!(empty($row['link1'])))
-			echo '<img src="'.$row['link1'].'">';
-		if (!(empty($row['link2'])))
-			echo '<img src="'.$row['link2'].'">';
-		if (!(empty($row['link3'])))
-			echo '<img src="'.$row['link3'].'">';
-		if (!(empty($row['link4'])))
-			echo '<img src="'.$row['link4'].'">';
-		if (!(empty($row['link5'])))
-			echo '<img src="'.$row['link5'].'">';
-		if (!(empty($row['link6'])))
-			echo '<img src="'.$row['link6'].'">';
-		if (!(empty($row['link7'])))
-			echo '<img src="'.$row['link7'].'">';
-		if (!(empty($row['link8'])))
-			echo '<img src="'.$row['link8'].'">';
-		if (!(empty($row['link9'])))
-			echo '<img src="'.$row['link9'].'">';
-		if (!(empty($row['link10'])))
-			echo '<img src="'.$row['link10'].'">';
-		if (!(empty($row['link11'])))
-			echo '<img src="'.$row['link11'].'">';
-		if (!(empty($row['link12'])))
-			echo '<img src="'.$row['link12'].'">';
+			if (!(empty($row['link1'])))
+				echo '<img src="'.$row['link1'].'">';
+			if (!(empty($row['link2'])))
+				echo '<img src="'.$row['link2'].'">';
+			if (!(empty($row['link3'])))
+				echo '<img src="'.$row['link3'].'">';
+			if (!(empty($row['link4'])))
+				echo '<img src="'.$row['link4'].'">';
+			if (!(empty($row['link5'])))
+				echo '<img src="'.$row['link5'].'">';
+			if (!(empty($row['link6'])))
+				echo '<img src="'.$row['link6'].'">';
+			if (!(empty($row['link7'])))
+				echo '<img src="'.$row['link7'].'">';
+			if (!(empty($row['link8'])))
+				echo '<img src="'.$row['link8'].'">';
+			if (!(empty($row['link9'])))
+				echo '<img src="'.$row['link9'].'">';
+			if (!(empty($row['link10'])))
+				echo '<img src="'.$row['link10'].'">';
+			if (!(empty($row['link11'])))
+				echo '<img src="'.$row['link11'].'">';
+			if (!(empty($row['link12'])))
+				echo '<img src="'.$row['link12'].'">';
 
-		echo '</div>';
-		echo '</div>';
-		echo '<br>';
-    }
+			echo '</div>';
+			echo '</div>';
+			echo '<br>';
+		}
+	}
+	else
+	{
+		$imageSet = mysqli_query($conn, "Select * from sets_list where setName='".$_SESSION['set1']."' OR setName='".$_SESSION['set2']."' OR setName='".$_SESSION['set3']."'");
+		while ($row = mysqli_fetch_assoc($imageSet))
+		{
+			echo '<div class="container">';
+			echo '<button type="button" class="collapsible" style="font-size: 32px">';
+			echo $row['setName'];
+			echo '</button>';
+
+			echo '<div class="content">';
+			echo '<br>';
+			echo "<a style='text-decoration:none; margin-right: 1%;' href='editor.php?id=".$row['ID']."'><button style='background-color: #ffe599;'>Edit Set</button></a>";
+			echo "<a style='text-decoration:none' href='presentation.php?id=".$row['ID']."'><button style='background-color: #b6d7a8;'>Present Set</button></a>";
+			echo '<br>';
+
+			if (!(empty($row['link1'])))
+				echo '<img src="'.$row['link1'].'">';
+			if (!(empty($row['link2'])))
+				echo '<img src="'.$row['link2'].'">';
+			if (!(empty($row['link3'])))
+				echo '<img src="'.$row['link3'].'">';
+			if (!(empty($row['link4'])))
+				echo '<img src="'.$row['link4'].'">';
+			if (!(empty($row['link5'])))
+				echo '<img src="'.$row['link5'].'">';
+			if (!(empty($row['link6'])))
+				echo '<img src="'.$row['link6'].'">';
+			if (!(empty($row['link7'])))
+				echo '<img src="'.$row['link7'].'">';
+			if (!(empty($row['link8'])))
+				echo '<img src="'.$row['link8'].'">';
+			if (!(empty($row['link9'])))
+				echo '<img src="'.$row['link9'].'">';
+			if (!(empty($row['link10'])))
+				echo '<img src="'.$row['link10'].'">';
+			if (!(empty($row['link11'])))
+				echo '<img src="'.$row['link11'].'">';
+			if (!(empty($row['link12'])))
+				echo '<img src="'.$row['link12'].'">';
+
+			echo '</div>';
+			echo '</div>';
+			echo '<br>';
+		}
+	}
 	?>
 
 	<script>

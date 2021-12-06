@@ -21,6 +21,10 @@ if (isset($_POST['save']))
         $_SESSION['id'] = $row['id'];
         $_SESSION['username'] = $row['username'];
         $_SESSION['Type'] = $row['Type'];
+        $_SESSION['set1'] = $row['Set1'];
+        $_SESSION['set2'] = $row['Set2'];
+        $_SESSION['set3'] = $row['Set3'];
+
 
         //print_r($row);       //prints out all the data in $row (a certain row in the database)
         header("Location: Home.php");
