@@ -68,22 +68,24 @@ require_once "function.php";
 
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
       
-        <ul class="navbar-nav justify-content-center">
-          <li class="nav-item active">
-            <a class="nav-link" href="Home.php">Home<span class="sr-only"></span></a>
-          </li>
-          <?php if(isset($_SESSION['username']) && $_SESSION['Type'] == 'Admin') { ?>
-            <li class="nav-item"> <a class="nav-link" href="Library.php">Library</a> </li>
-          <?php } ?>
-          <li class="nav-item">
-            <a class="nav-link" href="demo.php">Presentation</a>
-          </li>
-          <?php if(isset($_SESSION['username']) && $_SESSION['Type'] == 'Admin') { ?>
-            <li class="nav-item"><a class="nav-link" href="editorHome.php">Editor</a></li>
-          <?php } ?>
-          <li class="nav-item">
-            <a class="nav-link" href="About.php">About</a>
-          </li>
+      <ul class="navbar-nav justify-content-center">
+            <li class="nav-item active">
+                <a class="nav-link" href="Home.php">Home<span class="sr-only"></span></a>
+            </li>
+            <?php if(isset($_SESSION['username']) && ($_SESSION['Type'] == 'Admin' || $_SESSION['Type'] == 'Teacher')) { ?>
+					<li class="nav-item"> <a class="nav-link" href="Library.php">Library</a> </li>
+					<?php } ?>
+					<li class="nav-item">
+					<a class="nav-link" href="demo.php">Presentation</a>
+					</li>
+					<?php if(isset($_SESSION['username']) && ($_SESSION['Type'] == 'Admin' || $_SESSION['Type'] == 'Parent' || $_SESSION['Type'] == 'Teacher')) { ?>
+					<li class="nav-item">
+						<a class="nav-link" href="editorHome.php">Editor</a>
+					</li>
+					<?php } ?>
+            <li class="nav-item">
+                <a class="nav-link" href="About.php">About</a>
+            </li>
         </ul>
 
         <!--- Checks if user is on an account, and if they are display their username and the logout option --->
@@ -95,6 +97,10 @@ require_once "function.php";
                 if ($_SESSION['Type'] == 'Admin')
                 {
                     echo $_SESSION['username'];
+                }
+                else if ($_SESSION['Type'] == 'Teacher')
+                {
+                  echo 'Teacher'.$_SESSION['id'];
                 }
                 else
                 {
@@ -139,7 +145,7 @@ require_once "function.php";
     </tr>
     <tbody id = "myTableData">
     <?php
-        $search_result = mysqli_query($conn,"select * from entry_details");
+        $search_result = mysqli_query($conn,"select * from entry_details where Type = 'Parent'");
         $setResult = mysqli_query($conn,"select * from sets_list");
         while($data = mysqli_fetch_array($search_result)) 
         { ?>
@@ -183,7 +189,7 @@ require_once "function.php";
         </tr>
         <tbody id = "myTableData">
         <?php
-            $search_result = mysqli_query($conn,"select * from entry_details");
+            $search_result = mysqli_query($conn,"select * from entry_details where Type = 'Parent'");
             $setResult = mysqli_query($conn,"select * from sets_list");
             while($data = mysqli_fetch_array($search_result)) 
             { ?>

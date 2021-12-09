@@ -162,7 +162,7 @@ require_once "function.php";
 	<br>
 
 	<?php
-	if ($_SESSION['Type'] == 'Admin')
+	if ($_SESSION['Type'] == 'Admin' || $_SESSION['Type'] == 'Teacher')
 	{
 		$imageSet = mysqli_query($conn, "Select * from sets_list");
 		while ($row = mysqli_fetch_assoc($imageSet))
