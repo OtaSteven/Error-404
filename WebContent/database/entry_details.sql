@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 05, 2021 at 03:02 AM
+-- Generation Time: Dec 09, 2021 at 11:14 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -43,9 +43,13 @@ CREATE TABLE `entry_details` (
 --
 
 INSERT INTO `entry_details` (`id`, `email`, `username`, `password`, `Type`, `Set1`, `Set2`, `Set3`) VALUES
-(1, 'sho8517@gmail.com', 'StevenWHo', '1234', 'Admin', NULL, NULL, NULL),
-(2, 'abc@gmail.com', 'abc', '1111', 'Parent', NULL, NULL, NULL),
-(3, '123@gmail.com', '123Test', '1111', 'Parent', NULL, NULL, NULL);
+(1, 'sho8517@gmail.com', 'StevenWHo', '1234', 'Admin', 'Test 1', 'Test 2', 'Test 1'),
+(2, 'abc@gmail.com', 'parent1', '1111', 'Parent', 'Test 2', 'Test 2', 'Test 2'),
+(3, '123@gmail.com', 'teacher1', '1111', 'Teacher', 'Test 1', 'Test 2', 'Test 1'),
+(4, 'ethanha@csus.edu', 'Ethan123', '1111', 'Teacher', 'Test 1', 'Test 2', 'Test 1'),
+(5, 'isaiah@csus.edu', 'Spidey123', '2222', 'Teacher', '', '', ''),
+(6, 'jesse@csus.edu', 'leviQuach', '3333', 'Teacher', NULL, NULL, NULL),
+(7, 'stevenwho@csus.edu', 'Steve99', '1111', 'Parent', NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -65,7 +69,7 @@ ALTER TABLE `entry_details`
 -- AUTO_INCREMENT for table `entry_details`
 --
 ALTER TABLE `entry_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
