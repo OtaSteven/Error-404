@@ -158,9 +158,12 @@ require_once "function.php";
     </table>
 <br>
 <input type="submit"  name="generate" value="Generate" data-inline="true" style="height:50px; width:225px; margin-left: 25%;">
-<input type="submit"  name="save" value="Save" data-inline="true" style="height:50px; width:225px;">
-<br><br>
-<input type="text" name="setName" style="height:50px; width:450px; margin-left: 25%; text-align: center" placeholder="Enter Set name">
+<?php if($_SESSION['Type'] == 'Admin' || $_SESSION['Type'] == 'Teacher') { ?>
+    <input type="submit"  name="save" value="Save" data-inline="true" style="height:50px; width:225px;">
+    <br><br>
+    <input type="text" name="setName" style="height:50px; width:450px; margin-left: 25%; text-align: center" placeholder="Enter Set name">
+<?php } ?>
+
 </form>
 <br>
 </div>

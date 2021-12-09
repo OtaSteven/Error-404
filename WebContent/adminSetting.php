@@ -131,7 +131,7 @@ require_once "function.php";
   </section>
 
 <!-- landing page welcome and body -->
-<table border="solid black" class="rightSide items" width="535px" style="text-align:center;">
+<table border="solid black" class="rightSide items" width="500px" style="text-align:center;">
     <tr>
         <th colspan="4" style="font-size: 24px;">Database</th>
         <th><button style="background-color: #ace5ee; border-radius: 5px; height: 60px"><a style="text-decoration: none; color: black;" href="<?php  $_SERVER['PHP_SELF']; ?>">Refresh</a></button></th>
@@ -175,7 +175,7 @@ require_once "function.php";
 <br>
 
 <form method="POST">
-    <table border="solid black" class="leftSide items" width="608px" style="text-align:center;">
+    <table border="solid black" class="leftSide items" width="573px" style="text-align:center;">
         <tr>
             <th colspan="6" style="font-size: 24px;">Set Selection</th>
         </tr>
