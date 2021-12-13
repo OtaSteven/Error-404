@@ -145,11 +145,11 @@ require_once "function.php";
     </tr>
     <tbody id = "myTableData">
     <?php
-        $search_result = mysqli_query($conn,"select * from entry_details where Type = 'Parent'");
+        $search_result = mysqli_query($conn,"select * from entry_details");
         $setResult = mysqli_query($conn,"select * from sets_list");
         while($data = mysqli_fetch_array($search_result)) 
         { ?>
-        <tr>
+        <tr <?php if ($data['Type'] == 'Admin' || $data['Type'] == 'Teacher') echo 'style = "display: none;"'; ?>>
             <td><input type="hidden" name = "userID[]" value = "<?php echo $data['id']; ?>"><?php echo $data['id']; ?></td>
             <td><?php echo $data['username']; ?></td>
             <td><?php echo $data['Set1']; ?></td>
@@ -175,7 +175,7 @@ require_once "function.php";
 <br>
 
 <form method="POST">
-    <table border="solid black" class="leftSide items" width="573px" style="text-align:center;">
+    <table border="solid black" class="leftSide items" width="600px" style="text-align:center;">
         <tr>
             <th colspan="6" style="font-size: 24px;">Set Selection</th>
         </tr>
@@ -189,11 +189,11 @@ require_once "function.php";
         </tr>
         <tbody id = "myTableData">
         <?php
-            $search_result = mysqli_query($conn,"select * from entry_details where Type = 'Parent'");
+            $search_result = mysqli_query($conn,"select * from entry_details");
             $setResult = mysqli_query($conn,"select * from sets_list");
             while($data = mysqli_fetch_array($search_result)) 
             { ?>
-            <tr>
+            <tr <?php if ($data['Type'] == 'Admin' || $data['Type'] == 'Teacher') echo 'style = "display: none;"'; ?>>
                 <td><input type="hidden" name = "userID[]" value = "<?php echo $data['id']; ?>"><?php echo $data['id']; ?></td>
                 <td><?php echo $data['username']; ?></td>
                 

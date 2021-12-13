@@ -220,10 +220,6 @@ require_once "function.php";
 
 			echo '<div class="content">';
 			echo '<br>';
-			if ($_SESSION['Type'] == 'Teacher')
-			{
-				echo "<a style='text-decoration:none; margin-right: 1%;' href='editor.php?id=".$row['ID']."'><button style='background-color: #ffe599;'>Edit Set</button></a>";
-			}
 			echo "<a style='text-decoration:none' href='presentation.php?id=".$row['ID']."'><button style='background-color: #b6d7a8;'>Present Set</button></a>";
 			echo '<br>';
 
