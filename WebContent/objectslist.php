@@ -8,7 +8,7 @@ if (isset($_POST['save']))      //When the button name 'save' is click on
     $link = $_POST['link'];     //gets data from the input name 'link'
     $type = $_POST['type'];     //gets data from the input name 'type'
 
-    $sql_query = "INSERT INTO objectslist (name, link, type)
+    $sql_query = "INSERT INTO objectslist (itemName, link, Type)
     VALUES ('$name', '$link', '$type')";           //This is where all the data we collected are stored into MySql database
 
     //If statements to make sure that the connection and our inputs are successfully inserted into the database
@@ -23,7 +23,7 @@ if (isset($_POST['save']))      //When the button name 'save' is click on
     
     mysqli_close($conn);        //making sure to close the connection with MySql
 
-    header("Location: Home2.php");   //Sending the user back to the login screen
+    header("Location: Home.php");   //Sending the user back to the login screen
     die();
 
 }
