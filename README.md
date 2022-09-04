@@ -21,7 +21,7 @@ https://community.canvaslms.com/t5/Canvas-Releases/tkb-p/canvas-release
 https://www.apachefriends.org/index.html
 https://code.visualstudio.com/
 https://github.com/OtaSteven/Error-404
-https://trello.com/invite/b/ywXThVd5/f389d7767332c4602e847105a2f65ccb/error404-csc-131-project
+https://trello.com/b/ywXThVd5
 ```
 ### *Header:*
 - **Team Name:** Error-404
